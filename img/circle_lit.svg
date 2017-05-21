@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="pattern-0" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
+      <path d="M 0 0 L 50 0 L 50 100 L 0 100 Z" style="fill: black;"/>
+    </pattern>
+    <linearGradient id="gradient-3" gradientUnits="userSpaceOnUse" x1="248.57" y1="55.26" x2="248.57" y2="430.838" spreadMethod="repeat">
+      <stop offset="0" style="stop-color: rgba(33, 148, 243, 1)"/>
+      <stop offset="1" style="stop-color: rgba(9, 95, 165, 1)"/>
+    </linearGradient>
+    <style id="bx-google-fonts">@import url(https://fonts.googleapis.com/css?family=Amarante:400);</style>
+  </defs>
+  <ellipse cx="248.57" cy="243.049" rx="188.895" ry="187.789" style="fill: url(#gradient-3);"/>
+  <text x="120.084" y="340.621" style="font-family: Amarante; font-size: 100.9px; font-variant: small-caps; word-spacing: 1px; white-space: pre; text-decoration: underline;">Lit</text>
+  <rect x="236.426" y="9.883" width="25" height="450" style="fill: rgb(255, 0, 0);" transform="matrix(1.000001, 0, 0, 1, 0.944359, 15.117)"/>
+  <text x="1300.638" y="957.682" transform="matrix(1.506591, 0, 0, 1.503053, -1690.936279, -1087.606812)" style="font-family: Amarante; font-size: 159.7px; white-space: pre;">P</text>
+</svg>
