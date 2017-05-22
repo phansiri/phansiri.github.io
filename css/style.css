@@ -67,3 +67,7 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+#footer-menu li {
+  display: inline;
+}
