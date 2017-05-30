@@ -32,7 +32,16 @@ p {
 
 .hero-banner {
   /*min-height: 600px;*/
-  height: 600px;
+  height: 800px;
+}
+
+.hero-banner .hero-image {
+  bottom: -175px;
+}
+
+.custom-nav-fix {
+  position: fixed;
+  z-index: 99999;
 }
 
 
