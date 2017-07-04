@@ -34,6 +34,10 @@ p {
   height: 801px;
 }
 
+#index-banner {
+  background-color: #acacac;
+}
+
 .hero-banner .hero-image {
   bottom: -175px;
 }
@@ -52,16 +56,28 @@ p {
   #index-banner .section {
     top: 10%;
   }
+
+  .hero-banner .hero-image {
+    position: initial;
+    width: 100%;
+  }
+
 }
 
 
 @media only screen and (max-width : 600px) {
   #index-banner .section {
-    top: 0;
+    top: 57px;
   }
 
   .hero-banner {
     min-height: 300px;
+    height: 694px;
+  }
+
+  .hero-banner .hero-image {
+    position: absolute;
+    top: 56px;
   }
 }
 
