@@ -6,7 +6,7 @@
  * Made By MaterializeCSS.com
  */
 
-body {
+html {
   font-family: 'Montserrat', 'Open Sans', 'Roboto', sans-serif;
 }
 
@@ -39,7 +39,8 @@ p {
 }
 
 #index-banner {
-  background-color: #acacac;
+  /*background-color: #acacac;*/
+  background-color: darkgray;
 }
 
 .hero-banner .hero-image {
