@@ -6,6 +6,10 @@
  * Made By MaterializeCSS.com
  */
 
+body {
+  font-family: 'Montserrat', 'Open Sans', 'Roboto', sans-serif;
+}
+
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -47,14 +51,14 @@ p {
   z-index: 99999;
 }
 
-
+/* Tablet */
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
   }
   #index-banner .section {
-    top: 10%;
+    top: 70%;
   }
 
   .hero-banner .hero-image {
@@ -64,21 +68,22 @@ p {
 
 }
 
-
+/* Mobile */
 @media only screen and (max-width : 600px) {
   #index-banner .section {
-    top: 57px;
+    top: 55%;
   }
 
   .hero-banner {
     min-height: 300px;
-    height: 694px;
+    height: 480px;
   }
 
   .hero-banner .hero-image {
-    position: absolute;
+    /*position: initial;*/
     top: 56px;
   }
+
 }
 
 .icon-block {
