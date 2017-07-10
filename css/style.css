@@ -66,7 +66,6 @@ p {
     position: initial;
     width: 100%;
   }
-
 }
 
 /* Mobile */
@@ -84,7 +83,13 @@ p {
     /*position: initial;*/
     top: 56px;
   }
+}
 
+/* Small Laptop */
+@media only screen and (max-width: 1024px) {
+  .hero-text {
+    font-size: 36px;
+  }
 }
 
 .icon-block {
