@@ -6,13 +6,13 @@
  * Made By MaterializeCSS.com
  */
 
-html {
-  font-family: 'Montserrat', 'Open Sans', 'Roboto', sans-serif;
-}
-
 nav ul a,
 nav .brand-logo {
   color: #444;
+}
+
+body {
+  top: 150px;
 }
 
 p {
@@ -24,71 +24,38 @@ p {
 }
 
 .parallax-container {
-  /*min-height: 400px;*/
-  /*line-height: 0;*/
-  /*height: auto;*/
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
   color: rgba(255,255,255,.9);
 }
-
 .parallax-container .section {
   width: 100%;
 }
 
-.hero-banner {
-  height: 801px;
-}
-
-#index-banner {
-  /*background-color: #acacac;*/
-  background-color: darkgray;
-}
-
-.hero-banner .hero-image {
-  bottom: -175px;
+.word-line:before .word-line:after {
+  width: 50px;
+  border-top: 1px solid #999;
 }
 
 .custom-nav-fix {
   position: fixed;
-  z-index: 99999;
 }
 
-/* Tablet */
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
   }
   #index-banner .section {
-    top: 70%;
-  }
-
-  .hero-banner .hero-image {
-    position: initial;
-    width: 100%;
+    top: 10%;
   }
 }
 
-/* Mobile */
 @media only screen and (max-width : 600px) {
   #index-banner .section {
-    top: 55%;
-  }
-
-  .hero-banner {
-    min-height: 300px;
-    height: 480px;
-  }
-
-  .hero-banner .hero-image {
-    /*position: initial;*/
-    top: 56px;
-  }
-}
-
-/* Small Laptop */
-@media only screen and (max-width: 1024px) {
-  .hero-text {
-    font-size: 36px;
+    top: 0;
   }
 }
 
@@ -101,13 +68,4 @@ p {
 
 footer.page-footer {
   margin: 0;
-}
-
-#footer-menu li {
-  display: inline;
-}
-
-.image-3 {
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
 }
