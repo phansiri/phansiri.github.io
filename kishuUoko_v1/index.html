@@ -35,7 +35,7 @@
         </div>
     </nav>
 
-    <div id="index-banner" class="parallax-container hero-image">
+    <div id="index-banner" class="parallax-container hero-text">
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
@@ -49,10 +49,16 @@
                 </div>
                 <br><br>
 
+
             </div>
         </div>
-        <div class="parallax">
-            <img src="imgs/section-hero-fish.jpg" alt="more cool fish picture">
+        <div class="parallax hero-video">
+
+            <video autoplay muted loop poster="imgs/section-hero-fish.jpg" id="bgvid">
+                <source src="imgs/video/kishu_uoko_bgvid.webm" type="video/webm">
+                <source src="imgs/video/kishu_uoko_bgvid.mp4" type="video/mp4">
+            </video>
+            <!--<img src="imgs/section-hero-fish.jpg" alt="more cool fish picture">-->
         </div>
     </div>
 </header>
@@ -71,7 +77,41 @@
                             </h2>
                 -->
                 <h3>About us</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                <div class="row">
+                    <div class="col s12 m6 l6 center">
+                        <h4>Seafood</h4>
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="materialboxed" width="100%" src="imgs/section-hero-fish.jpg">
+                                <!--<span class="card-title">Card Title</span>-->
+                            </div>
+                            <div class="card-content">
+                                <p>Info on your dad and where he gets the seafood.</p>
+                            </div>
+                            <!--<div class="card-action">-->
+                            <!--<a href="#">This is a link</a>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l6 center">
+                        <h4>Sushi</h4>
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="materialboxed" width="100%" src="imgs/section-hero-fish.jpg">
+                                <!--<span class="card-title">Card Title</span>-->
+                            </div>
+                            <div class="card-content">
+                                <p>Info on your mom and how and what she does with the seafood to make sushi.</p>
+                            </div>
+                            <!--<div class="card-action">-->
+                            <!--<a href="#">This is a link</a>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+
+                </div>
+                <p><b>Overall context on what they do there for the people who comes and visits.</b>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                     industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
                     and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
                     leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
@@ -130,13 +170,9 @@
             <div class="icon-block">
                 <h3>Location</h3>
                 <div class="col s12 light location-map">
-                    <div class="parallax-container">
-                        <div class="parallax">
-                            <img width="500"
-                                 src="https://maps.googleapis.com/maps/api/staticmap?center=2+Chome-1+Honmachi,+Wakayama-shi,+Wakayama-ken+640-8033,+Japan&zoom=16&scale=1&size=500x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xfff%7Clabel:%7C2+Chome-1+Honmachi,+Wakayama-shi,+Wakayama-ken+640-8033,+Japan"
-                                 alt="Google Map of 2 Chome-1 Honmachi, Wakayama-shi, Wakayama-ken 640-8033, Japan">
-                        </div>
-                    </div>
+
+                    <img id="map-image" src="imgs/map_v1.png" alt="map of shop">
+
                     <h5>2 Chome-1 Honmachi, Wakayama-shi, Wakayama-ken 640-8033, Japan</h5>
                     <h6>&#43;(81)73.488.1894</h6>
                 </div>
@@ -152,9 +188,7 @@
 
             <div class="col l6 s12">
                 <h5 class="white-text">Company Bio</h5>
-                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's
-                    our full time job. Any amount would help support and continue development on this project and is
-                    greatly appreciated.</p>
+                <p class="grey-text text-lighten-4">We are family owned.</p>
 
 
             </div>

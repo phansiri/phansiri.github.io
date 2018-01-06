@@ -1,5 +1,6 @@
 (function ($) {
     'use strict';
+
     $(function () {
 
         $('.button-collapse').sideNav({
@@ -9,5 +10,12 @@
         $('.scrollspy').scrollSpy();
         $('.materialboxed').materialbox();
 
+
     }); // end of document ready
 })(jQuery); // end of jQuery name space
+
+
+
+
+
+
