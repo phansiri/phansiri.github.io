@@ -56,7 +56,8 @@ p {
     }
     .hero-video {
 
-        background: url("../imgs/section-hero-fish.jpg") center;
+        background: url("../imgs/hero-seafood-sushi-min.jpg");
+        background-position: left;
         z-index: -1;
     }
     .hero-text {
