@@ -74,6 +74,11 @@ p {
     width: 100%;
 }
 
+/*.hero-video {*/
+    /*background: url("../imgs/hero-seafood-sushi-min.jpg");*/
+    /*z-index: 99999;*/
+/*}*/
+
 .icon-block {
     padding: 0 15px;
 }
@@ -88,13 +93,6 @@ footer.page-footer {
 
 #map-image {
     width: 100%;
-    height: auto;
-
 }
-
-
-
-
-
 
 
