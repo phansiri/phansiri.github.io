@@ -23,8 +23,13 @@ p {
     /*background-color: rgba(31, 31, 31, 0.4);*/
 /*}*/
 
+.hero-text {
+    background-color: rgba(31,31,31,0.4);
+}
+
 .parallax-container {
-    min-height: 700px;
+    /*min-height: 700px;*/
+    min-height: 575px;
     line-height: 0;
     height: auto;
     color: rgba(255, 255, 255, .9);
@@ -34,6 +39,7 @@ p {
     width: 100%;
 }
 
+/* Tablet */
 @media only screen and (max-width: 992px) {
     .parallax-container .section {
         position: absolute;
@@ -44,8 +50,13 @@ p {
         top: 10%;
     }
 
+    .parallax-container {
+        min-height: 430px;
+    }
+
 }
 
+/* Mobile */
 @media only screen and (max-width: 600px) {
     #index-banner .section {
         top: 0;
@@ -66,6 +77,10 @@ p {
 
     #bgvid {
         display: none;
+    }
+
+    .parallax-container {
+        min-height: 580px;
     }
 
 }
