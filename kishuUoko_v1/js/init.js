@@ -7,7 +7,9 @@
             closeOnClick: true
         });
         $('.parallax').parallax();
-        $('.scrollspy').scrollSpy();
+        $('.scrollspy').scrollSpy({
+            scrollOffset: 0
+        });
         $('.materialboxed').materialbox();
 
 
