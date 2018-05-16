@@ -8,7 +8,7 @@
         });
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy({
-            scrollOffset: 0
+            scrollOffset: 20
         });
         $('.materialboxed').materialbox();
 
