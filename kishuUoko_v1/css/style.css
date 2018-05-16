@@ -70,8 +70,7 @@ p {
         font-size: 45px;
     }
     .hero-video {
-
-        background: url("../imgs/hero-seafood-sushi-min.jpg");
+        background: url("../imgs/seafood-1200x900.jpg");
         background-position: left;
         z-index: -1;
     }
@@ -84,7 +83,7 @@ p {
     }
 
     .parallax-container {
-        min-height: 580px;
+        min-height: 425px;
     }
 
     .logo-image {
