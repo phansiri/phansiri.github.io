@@ -32,6 +32,11 @@ p {
     /*writing-mode: vertical-rl;*/
 }
 
+#logo {
+    height: 55px;
+    padding: 10px;
+}
+
 .parallax-container {
     /*min-height: 700px;*/
     min-height: 575px;
@@ -42,10 +47,6 @@ p {
 
 .parallax-container .section {
     width: 100%;
-}
-
-.logo-image {
-
 }
 
 /* Tablet */
