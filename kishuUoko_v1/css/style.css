@@ -29,6 +29,7 @@ p {
 
 #hero-title {
     font-family: "Sawarabi Mincho", cursive;
+    /*writing-mode: vertical-rl;*/
 }
 
 .parallax-container {
