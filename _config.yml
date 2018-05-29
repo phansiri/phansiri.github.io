@@ -6,7 +6,7 @@ title: Lit Phansiri
 email: phansiri@uw.edu
 description: "This is for Google search result."
 
-heroBackground: hero-bg.jpg
+heroBackground: hero/hero-bg.jpg
 
 # Landing page section
 intro-lead-in: hard work, perseverance and dedication...
