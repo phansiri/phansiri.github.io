@@ -1,0 +1,17 @@
+---
+title: Kishu Uoko website
+subtitle: Web Developer
+layout: default
+modal-id: 5
+date: 2018-05-30
+img: dreams.png
+thumbnail: dreams-thumbnail.png
+alt: image-alt
+project-date: 2006 - 2009
+category: Web Developer
+description: This is a website that is live.
+kishuuoko: true
+website: Kishu Uoko
+websitelink: /kishuUoko_v1/index.html
+
+---

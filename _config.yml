@@ -9,24 +9,28 @@ description: "This is for Google search result."
 heroBackground: hero/hero-bg.jpg
 
 # Landing page section
-intro-lead-in: hard work, perseverance and dedication...
+intro-lead-in: Do something that your future self will be proud of...
 intro-heading: Lit Phansiri
 intro-cta: Find out more
 
 # Capabilities section
 capa-title: Capabilities
-capa-desc: Pushing the envelope with everything I do
+capa-desc: Pushing the envelope with everything I do.
 capa-one-title: Compasionate Leader
 capa-one-desc: Marine Corps Officer that put others first
 capa-two-title: Developer
-capa-two-desc: Skilled in python, etc.
+capa-two-desc: Skilled in  Python, Java, The R Project, Swift, Javascript, PHP, SQL (SQL Server, MySQL, PostgreSQL), NoSQL (MongoBD), etc.
 capa-three-title: Cybersecurity
-capa-three-desc: Offensive and Defensive
+capa-three-desc: Offensive and Defensive - Penetration Testing on Web Applications
 
 # Portfolio section
 
 # About section
 
+# Philosophy
+quote-1: You are what you are repeatedly do. Therefore excellence aught to be a habit, not an act. - Aristotle
+quote-2: It doesn't matter how many times you get knocked down, its about how many times you get back up determines the quality of your life.
+quote-3: Shoot for the moon and if you miss, you will end of in the stars.
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
@@ -44,9 +48,9 @@ social:
     url: https://linkedin.com/in/litthideth-phansiri-6b79b098
 
 # Postal address (add as many lines as necessary)
-address:
-  - line: test line 1
-  - line: test line 2
+#address:
+#  - line: test line 1
+#  - line: test line 2
 
 # Build settings
 markdown: kramdown

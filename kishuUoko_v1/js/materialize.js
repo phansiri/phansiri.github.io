@@ -4521,9 +4521,9 @@ if (jQuery) {
     });
 
     // File Input Path
-    $(document).on('change', '.file-field input[type="file"]', function () {
-      var file_field = $(this).closest('.file-field');
-      var path_input = file_field.find('input.file-path');
+    $(document).on('change', '.files-field input[type="files"]', function () {
+      var file_field = $(this).closest('.files-field');
+      var path_input = file_field.find('input.files-path');
       var files = $(this)[0].files;
       var file_names = [];
       for (var i = 0; i < files.length; i++) {
