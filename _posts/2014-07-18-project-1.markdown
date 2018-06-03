@@ -1,6 +1,6 @@
 ---
-title: Dreams of mine
-subtitle: Website Design
+title: Marine Aviation Logistics Squadron 12
+subtitle: Compassionate Leader
 layout: default
 modal-id: 1
 date: 2014-07-18

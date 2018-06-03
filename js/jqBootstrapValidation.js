@@ -3,7 +3,7 @@
  *
  * v1.3.6
  *
- * License: MIT <http://opensource.org/licenses/mit-license.php> - see LICENSE file
+ * License: MIT <http://opensource.org/licenses/mit-license.php> - see LICENSE files
  *
  * http://ReactiveRaven.github.com/jqBootstrapValidation/
  */
