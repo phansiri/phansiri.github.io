@@ -4,8 +4,8 @@ subtitle: Web Developer
 layout: default
 modal-id: 5
 date: 2018-05-30
-img: dreams.png
-thumbnail: dreams-thumbnail.png
+img: treehouse.png
+thumbnail: treehouse-thumbnail.png
 alt: image-alt
 project-date: 2006 - 2009
 category: Web Developer
