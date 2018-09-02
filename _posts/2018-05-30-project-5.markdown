@@ -9,9 +9,10 @@ thumbnail: treehouse-thumbnail.png
 alt: image-alt
 project-date: 2006 - 2009
 category: Web Developer
-description: This is a website that is live.
+description: This is a Japanese fish store website based out of Wakayama-city.
+
 kishuuoko: true
 website: Kishu Uoko
-websitelink: /kishuUoko_v1/index.html
+websitelink: https://kishuuoko.jp
 
 ---
