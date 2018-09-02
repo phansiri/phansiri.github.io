@@ -3,6 +3,8 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+---
+---
 
 body {
     overflow-x: hidden;
@@ -269,7 +271,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    /*background-image: url('{{ site.baseurl }}{{ site.heroBackground }}');*/
+    background-image: url('{{ site.baseurl }}{{ site.heroBackground }}');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
