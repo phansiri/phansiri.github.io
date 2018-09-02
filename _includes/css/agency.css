@@ -270,7 +270,6 @@ header {
     color: #fff;
     background-attachment: scroll;
     background-image: url('{{ site.baseurl }}{{ site.heroBackground }}');
-    /*background-image: url('https://litphansiri.co{{ site.heroBackground }}');*/
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
