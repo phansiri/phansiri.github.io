@@ -269,7 +269,7 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url('{{ site.baseurl }}/img/{{ site.heroBackground }}');
+    background-image: url('{{ site.baseurl }}{{ site.heroBackground }}');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;

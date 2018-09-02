@@ -6,7 +6,7 @@ title: Lit Phansiri
 email: phansiri@uw.edu
 description: "This is for Google search result."
 
-heroBackground: hero/hero-bg.jpg
+heroBackground: /img/hero/hero-bg.jpg
 
 # Landing page section
 intro-lead-in: Do something that your future self will be proud of...
@@ -28,7 +28,7 @@ capa-three-desc: Offensive and Defensive - Penetration Testing on Web Applicatio
 # About section
 
 # Philosophy
-quote-1: You are what you are repeatedly do. Therefore excellence aught to be a habit, not an act. - Aristotle
+quote-1: You are what you are repeatedly do. Therefore excellence ought to be a habit, not an act. - Aristotle
 quote-2: It doesn't matter how many times you get knocked down, its about how many times you get back up determines the quality of your life.
 quote-3: Shoot for the moon and if you miss, you will end of in the stars.
 
