@@ -30,7 +30,7 @@ capa-three-desc: Offensive and Defensive - Penetration Testing on Web Applicatio
 # Philosophy
 quote-1: You are what you are repeatedly do. Therefore excellence ought to be a habit, not an act. - Aristotle
 quote-2: It doesn't matter how many times you get knocked down, its about how many times you get back up determines the quality of your life.
-quote-3: Shoot for the moon and if you miss, you will end of in the stars.
+quote-3: Shoot for the moon and if you miss, you will end up in the stars.
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
@@ -51,7 +51,6 @@ social:
 #address:
 #  - line: test line 1
 #  - line: test line 2
-
 # Build settings
 markdown: kramdown
 permalink: pretty
