@@ -1,0 +1,16 @@
+---
+title: University of Washington NROTC website
+subtitle: Web Developer
+layout: default
+modal-id: 2
+date: 2017-09-05
+img: uwnrotc-portfolio-min.png
+thumbnail: uwnrotc-portfolio-thumbnail-min.png
+alt: image-alt
+project-date: September 2017
+client: UW NROTC
+category: Web Development
+description: Redesigned website utilizing wordpress in order to allow easy update while having a professional website
+website: UW NROTC
+websitelink: http://nrotc.washington.edu/
+---
