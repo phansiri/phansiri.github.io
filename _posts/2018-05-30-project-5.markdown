@@ -4,10 +4,11 @@ subtitle: Web Developer
 layout: default
 modal-id: 5
 date: 2018-05-30
-img: treehouse.png
-thumbnail: treehouse-thumbnail.png
+img: kishuuoko-portfolio-min.png
+thumbnail: kishuuoko-portfolio-thumbnail-min.png
 alt: image-alt
 project-date: 2006 - 2009
+client: Owners of Kishu Uoko shop
 category: Web Developer
 description: This is a Japanese fish store website based out of Wakayama-city.
 
