@@ -8,10 +8,10 @@ export const siteConfig = {
   // Author Information
   author: {
     name: 'Lit Phansiri',
-    email: 'lit@phansiri.dev',
+    email: 'lphansiri@gmail.com',
     image: '/portfolio/lit_profile.png',
     github: 'https://github.com/phansiri',
-    linkedin: 'https://linkedin.com/in/litphansiri',
+    linkedin: 'https://www.linkedin.com/in/litthideth-phansiri-6b79b098/,
   },
   
   // Site Features
@@ -25,7 +25,7 @@ export const siteConfig = {
   // Social Links
   social: {
     github: 'https://github.com/phansiri',
-    linkedin: 'https://linkedin.com/in/litphansiri',
+    linkedin: 'https://www.linkedin.com/in/litthideth-phansiri-6b79b098/',
   },
   
   // Future extensibility - you can add more config here
