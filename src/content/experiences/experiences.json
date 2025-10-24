@@ -1,0 +1,107 @@
+[
+  {
+    "id": "mccyber-2024-1",
+    "title": "Data Scientist",
+    "company": "Marine Forces Cyber Command",
+    "location": "Fort Meade, MD",
+    "period": "2024 - Present",
+    "description": "AI Capabilities Developer.",
+    "achievements": [
+      "Developing AI/ML capabilities for Marine Corps cyber operations",
+      "Implementing AI/ML specific solutions for cybersecurity applications",
+      "Creating data-driven insights for operational decision making",
+      "Building scalable AI/ML systems for military applications"
+    ],
+    "technologies": ["Python", "Machine Learning", "AI/ML", "Data Science", "Cybersecurity", "Cloud Computing"]
+  },
+  {
+    "id": "mccyber-2024",
+    "title": "Assistant Future/Current Operations Office and Training Officer",
+    "company": "Marine Corps Cyberspace Warfare Group",
+    "location": "Fort Meade, MD",
+    "period": "2023 - 2024",
+    "description": "Help develop the future offensive and defensive cyber operators through training and exercises.",
+    "achievements": [
+      "Developed comprehensive training programs for cyber operators",
+      "Planned, designed, and executed cyber exercises",
+      "Mentored junior cyber warfare officers",
+      "Created operational procedures for offensive and defensive cyber operations"
+    ],
+    "technologies": ["Training Development", "Exercise Design", "Cyber Operations", "Leadership", "Strategic Planning"]
+  },
+  {
+    "id": "usmc-2023",
+    "title": "Cyberspace Warfare Officer - Staff Planner",
+    "company": "31st Marine Expeditionary Unit",
+    "location": "Okinawa, Japan",
+    "period": "2020 - 2023",
+    "description": "Pushed the innovation of tactical cyber operations at the edge.",
+    "achievements": [
+      "Innovated tactical cyber operations for expeditionary forces",
+      "Developed cyber capabilities for forward-deployed units",
+      "Integrated cyber operations with traditional military operations",
+      "Led cyber planning for expeditionary missions"
+    ],
+    "technologies": ["Cyber Operations", "Tactical Planning", "Military Operations", "Innovation", "Strategic Planning"]
+  },
+  {
+    "id": "usmc-2020-1",
+    "title": "Cyberspace Warfare Officer - Executive Officer, Operations Officer, and Platoon Commander",
+    "company": "DCO-IDM, III MIG, III MEF",
+    "location": "Okinawa, Japan",
+    "period": "2018 - 2020",
+    "description": "Led the development of the new defensive cyber operations program for the III Marine Expeditionary Force.",
+    "achievements": [
+      "Established new defensive cyber operations program",
+      "Led multiple cyber operations teams",
+      "Developed operational procedures and protocols",
+      "Managed cyber operations for III Marine Expeditionary Force"
+    ],
+    "technologies": ["Cyber Operations", "Leadership", "Program Development", "Operations Management", "Team Leadership"]
+  },
+  {
+    "id": "usmc-2020",
+    "title": "Software Engineer",
+    "company": "Defense Digital Service",
+    "location": "Washington, DC",
+    "period": "2020 - 2020",
+    "description": "Had the opportunity to take part in a DevSecOps team that developed a framework to rapidly deploy and manage cloud-based applications into the Marine Corps Enterprise Network.",
+    "achievements": [
+      "Developed DevSecOps framework for Marine Corps Enterprise Network",
+      "Implemented cloud-based application deployment solutions",
+      "Created automated deployment and management systems",
+      "Collaborated with cross-functional teams on security-focused development"
+    ],
+    "technologies": ["DevSecOps", "Cloud Computing", "Software Engineering", "Automation", "Security", "AWS", "Docker"]
+  },
+  {
+    "id": "usmc-2012",
+    "title": "Canvassing Recruiter",
+    "company": "Recruiting Sub Station Bellevue, Recruiting Station Seattle",
+    "location": "Bellevue, WA",
+    "period": "2009 - 2012",
+    "description": "Provided the opportunity for young men and women to be part of the legacy.",
+    "achievements": [
+      "Successfully recruited qualified candidates for Marine Corps service",
+      "Developed and maintained community relationships",
+      "Conducted outreach and educational programs",
+      "Mentored and guided prospective Marines through recruitment process"
+    ],
+    "technologies": ["Recruitment", "Community Outreach", "Public Speaking", "Mentoring", "Relationship Building"]
+  },
+  {
+    "id": "usmc-2017",
+    "title": "Enlisted Marine E1-E7",
+    "company": "United States Marine Corps",
+    "location": "Various Locations",
+    "period": "2003 - 2017",
+    "description": "Served in various leadership and technical roles, supporting the Aviation Combat Element.",
+    "achievements": [
+      "Progressed through enlisted ranks from E1 to E7",
+      "Demonstrated leadership in various technical and operational roles",
+      "Supported Aviation Combat Element operations",
+      "Mentored junior Marines and developed technical expertise"
+    ],
+    "technologies": ["Leadership", "Technical Operations", "Aviation Support", "Team Management", "Military Operations"]
+  }
+]

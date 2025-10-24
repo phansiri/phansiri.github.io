@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ai-ml-technology",
+    "category": "AI/ML Technology",
+    "skills": ["LangGraph", "LangChain", "PyTorch", "TensorFlow", "Keras", "HuggingFace", "Scikit-learn"]
+  },
+  {
+    "id": "llm-inferencing",
+    "category": "LLM Inferencing",
+    "skills": ["OpenAI", "Anthropic", "Ollama", "LM Studio", "Bedrock", "SageMaker"]
+  },
+  {
+    "id": "languages",
+    "category": "Languages",
+    "skills": ["Python", "JavaScript", "TypeScript", "HTML5", "CSS3", "Java", "C"]
+  },
+  {
+    "id": "backend-technologies",
+    "category": "Backend Technologies",
+    "skills": ["FastAPI", "Django", "MySQL", "PostgreSQL", "MongoDB", "GraphQL"]
+  },
+  {
+    "id": "frontend-technologies",
+    "category": "Frontend Technologies",
+    "skills": ["React", "Next.js", "Astro", "TailwindCSS"]
+  },
+  {
+    "id": "cloud-devops",
+    "category": "Cloud & DevOps",
+    "skills": ["AWS", "Docker", "Kubernetes", "Ansible", "GitHub Actions", "CI/CD", "MLOps"]
+  },
+  {
+    "id": "other-technologies",
+    "category": "Other Technologies",
+    "skills": ["Docker", "Kubernetes", "Ansible", "GitHub Actions"]
+  },
+  {
+    "id": "leadership-management",
+    "category": "Leadership & Management",
+    "skills": ["PM", "Team Leadership", "Strategic Planning", "Communication", "Agile/Scrum"]
+  }
+]

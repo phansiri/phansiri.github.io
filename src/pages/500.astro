@@ -1,0 +1,55 @@
+---
+import MainLayout from '../layouts/main.astro';
+import { Button } from '@/components/ui/button';
+---
+
+<MainLayout 
+  title="Server Error - Lit Phansiri"
+  description="Something went wrong on our end. Please try again later or contact me if the problem persists."
+  noindex={true}
+>
+  <!-- 500 Error Page -->
+  <div class="container mx-auto px-4 py-16 text-center">
+    <div class="max-w-2xl mx-auto">
+      <!-- Error Code -->
+      <div class="text-8xl md:text-9xl font-bold text-destructive/20 mb-8">500</div>
+      
+      <!-- Error Message -->
+      <h1 class="text-3xl md:text-4xl font-bold mb-6">Server Error</h1>
+      <p class="text-xl text-muted-foreground mb-8">
+        Something went wrong on our end. We're working to fix this issue.
+      </p>
+      
+      <!-- What to do -->
+      <div class="bg-muted/50 rounded-lg p-6 mb-8">
+        <h3 class="font-semibold mb-4">What you can do:</h3>
+        <ul class="text-left text-sm text-muted-foreground space-y-2">
+          <li>• Try refreshing the page in a few minutes</li>
+          <li>• Check if the problem persists</li>
+          <li>• Clear your browser cache and cookies</li>
+          <li>• Try accessing the site from a different browser</li>
+        </ul>
+      </div>
+      
+      <!-- Quick Actions -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <button onclick="window.location.reload()" class="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
+          Refresh Page
+        </button>
+        <a href="/" class="px-6 py-2 border border-border rounded-md hover:bg-accent transition-colors">
+          Go Home
+        </a>
+      </div>
+      
+      <!-- Contact for persistent issues -->
+      <div class="text-center">
+        <p class="text-sm text-muted-foreground mb-4">
+          If this problem persists, please let me know:
+        </p>
+        <a href="/contact">
+          <Button variant="outline">Report Issue</Button>
+        </a>
+      </div>
+    </div>
+  </div>
+</MainLayout>

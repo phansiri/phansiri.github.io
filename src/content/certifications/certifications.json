@@ -1,0 +1,23 @@
+[
+  {
+    "id": "aws-cloud-practitioner",
+    "name": "AWS Certified Cloud Practitioner",
+    "issuer": "Amazon Web Services",
+    "date": "2023",
+    "description": "Foundational understanding of AWS Cloud concepts, services, and security."
+  },
+  {
+    "id": "google-data-analytics",
+    "name": "Google Data Analytics Certificate",
+    "issuer": "Google",
+    "date": "2022",
+    "description": "Comprehensive training in data analysis tools and techniques."
+  },
+  {
+    "id": "ibm-python-data-science",
+    "name": "Python for Data Science",
+    "issuer": "IBM",
+    "date": "2022",
+    "description": "Advanced Python programming for data science and machine learning applications."
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ai-genzen",
+    "title": "Capstone Project: GenZen",
+    "impact": "Your AI-powered mental health support companion.",
+    "year": "2025",
+    "tech": ["Python", "Langgraph", "RAG", "Finetune LLM", "Docker", "FastAPI", "Next.js", "AWS Ecosystem", "Kubernetes"],
+    "visual": "/visuals/genzen-banner.svg",
+    "summary": "Empowering students to manage stress, build resilience, and enhance their well-being through personalized.",
+    "link": "https://www.ischool.berkeley.edu/projects/2025/genzen",
+    "priority": true
+  },
+  {
+    "id": "web-kishu",
+    "title": "Redesign Kishu Uuoko Website",
+    "impact": "Increase website traffic and engagement.",
+    "year": "2023",
+    "tech": ["JavaScript", "Gatsby", "Bulma"],
+    "visual": "/visuals/kishu-store.svg",
+    "summary": "Modernization of the fish stores website using modern web technologies and design principles.",
+    "link": "https://kishuuoko.jp/",
+    "priority": false
+  },
+  {
+    "id": "sw-solo",
+    "title": "System for Operations Logistics Order (SOLO)",
+    "impact": "Concept on how to modernize the Marine Corps' logistics system with a CI/CD pipeline for compliance.",
+    "year": "2020",
+    "tech": ["Python", "Django", "React", "GitHub Actions", "AWS Ecosystem"],
+    "visual": "/visuals/solo.svg",
+    "summary": "Defense Digital Service project. It was created to prove that the Marine Corps can organically develop adhering to sound best industry best practices.",
+    "link": "https://github.com/deptofdefense/solo",
+    "priority": false
+  },
+  {
+    "id": "uw-capstone",
+    "title": "Capstone Project: MT Rainier Wilderness Reservation System",
+    "impact": "Modernization of the wilderness reservation system.",
+    "year": "2017",
+    "tech": ["WordPress", "PHP", "MySQL", "AWS"],
+    "visual": "/visuals/uw-capstone.svg",
+    "summary": "A system for managing wilderness reservations in the Mount Rainier National Park.",
+    "link": "https://ischool.uw.edu/capstone/projects/2016/mt-rainier-wilderness-reservation-system",
+    "priority": false
+  },
+  {
+    "id": "uw-nrotc-website",
+    "title": "University of Washington NROTC Website",
+    "impact": "Modernization of the NROTC website.",
+    "year": "2016",
+    "tech": ["Drupal", "WordPress", "PHP", "MySQL"],
+    "visual": "/visuals/uw-nrotc-website.svg",
+    "summary": "Modernized NROTC website from Drupal to WordPress, enabling easy content updates with a professional design.",
+    "link": "https://nrotc.washington.edu/",
+    "priority": false
+  }
+]

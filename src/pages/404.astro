@@ -1,0 +1,80 @@
+---
+import MainLayout from '../layouts/main.astro';
+import { Button } from '@/components/ui/button';
+---
+
+<MainLayout 
+  title="Page Not Found - Lit Phansiri"
+  description="The page you're looking for doesn't exist. Explore my portfolio, blog, and projects instead."
+  noindex={true}
+>
+  <!-- 404 Error Page -->
+  <div class="container mx-auto px-4 py-16 text-center">
+    <div class="max-w-2xl mx-auto">
+      <!-- Error Code -->
+      <div class="text-8xl md:text-9xl font-bold text-primary/20 mb-8">404</div>
+      
+      <!-- Error Message -->
+      <h1 class="text-3xl md:text-4xl font-bold mb-6">Page Not Found</h1>
+      <p class="text-xl text-muted-foreground mb-8">
+        Sorry, the page saw a squirrel and ran away. In the meantime, you can try the links below.
+      </p>
+      
+      <!-- Helpful Links -->
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        <a href="/" class="group p-4 rounded-lg border hover:border-primary transition-colors">
+          <div class="text-2xl mb-2">🏠</div>
+          <h3 class="font-semibold mb-1 group-hover:text-primary transition-colors">Home</h3>
+          <p class="text-sm text-muted-foreground">Return to the homepage</p>
+        </a>
+        
+        <a href="/blog" class="group p-4 rounded-lg border hover:border-primary transition-colors">
+          <div class="text-2xl mb-2">📝</div>
+          <h3 class="font-semibold mb-1 group-hover:text-primary transition-colors">Blog</h3>
+          <p class="text-sm text-muted-foreground">Read my latest articles</p>
+        </a>
+        
+        <a href="/projects" class="group p-4 rounded-lg border hover:border-primary transition-colors">
+          <div class="text-2xl mb-2">🚀</div>
+          <h3 class="font-semibold mb-1 group-hover:text-primary transition-colors">Projects</h3>
+          <p class="text-sm text-muted-foreground">Explore my work</p>
+        </a>
+        
+        <a href="/about" class="group p-4 rounded-lg border hover:border-primary transition-colors">
+          <div class="text-2xl mb-2">👋</div>
+          <h3 class="font-semibold mb-1 group-hover:text-primary transition-colors">About</h3>
+          <p class="text-sm text-muted-foreground">Learn more about me</p>
+        </a>
+      </div>
+      
+      <!-- Search Suggestion -->
+      <div class="bg-muted/50 rounded-lg p-6 mb-8">
+        <h3 class="font-semibold mb-2">Looking for something specific?</h3>
+        <p class="text-sm text-muted-foreground mb-4">
+          Try searching my blog or browse by category:
+        </p>
+        <div class="flex flex-wrap gap-2 justify-center">
+          <a href="/blog?category=AI/ML" class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm hover:bg-primary/20 transition-colors">
+            AI/ML
+          </a>
+          <a href="/blog?category=Computer Systems" class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm hover:bg-primary/20 transition-colors">
+            Computer Systems
+          </a>
+          <a href="/blog?category=Technology" class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm hover:bg-primary/20 transition-colors">
+            Technology
+          </a>
+        </div>
+      </div>
+      
+      <!-- Contact Link -->
+      <div class="text-center">
+        <p class="text-sm text-muted-foreground mb-4">
+          Still can't find what you're looking for?
+        </p>
+        <a href="/contact">
+          <Button variant="outline">Contact Me</Button>
+        </a>
+      </div>
+    </div>
+  </div>
+</MainLayout>
