@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content';
+import { siteConfig, getFullUrl, getImageUrl } from '../lib/config';
 
 export async function GET() {
   const posts = await getCollection('blog');
@@ -11,22 +12,22 @@ export async function GET() {
   <channel>
     <title>Lit Phansiri - AI/ML &amp; Technology Blog</title>
     <description>Insights on AI/ML, computer systems, and technology from a full-stack data scientist's perspective. Covering neural networks, transformers, AWS Bedrock, LangGraph, and more.</description>
-    <link>https://phansiri.github.io/blog</link>
-    <atom:link href="https://phansiri.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <link>${getFullUrl('/blog')}</link>
+    <atom:link href="${getFullUrl('/rss.xml')}" rel="self" type="application/rss+xml"/>
     <language>en-US</language>
-    <managingEditor>lit@phansiri.dev (Lit Phansiri)</managingEditor>
-    <webMaster>lit@phansiri.dev (Lit Phansiri)</webMaster>
+    <managingEditor>${siteConfig.author.email} (${siteConfig.author.name})</managingEditor>
+    <webMaster>${siteConfig.author.email} (${siteConfig.author.name})</webMaster>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <generator>Astro Static Site Generator</generator>
-    <copyright>Copyright © ${new Date().getFullYear()} Lit Phansiri. All rights reserved.</copyright>
+    <copyright>Copyright © ${new Date().getFullYear()} ${siteConfig.author.name}. All rights reserved.</copyright>
     <category>Technology</category>
     <category>Artificial Intelligence</category>
     <category>Machine Learning</category>
     <category>Data Science</category>
     <image>
-      <url>https://phansiri.github.io/portfolio/lit_profile.png</url>
-      <title>Lit Phansiri</title>
-      <link>https://phansiri.github.io</link>
+      <url>${getImageUrl(siteConfig.author.image)}</url>
+      <title>${siteConfig.author.name}</title>
+      <link>${siteConfig.url}</link>
       <width>144</width>
       <height>144</height>
     </image>
@@ -35,14 +36,14 @@ export async function GET() {
       <title><![CDATA[${post.data.title}]]></title>
       <description><![CDATA[${post.data.description}]]></description>
       <content:encoded><![CDATA[${post.data.description}]]></content:encoded>
-      <link>https://phansiri.github.io/blog/${post.slug}</link>
-      <guid isPermaLink="true">https://phansiri.github.io/blog/${post.slug}</guid>
+      <link>${getFullUrl(`/blog/${post.slug}`)}</link>
+      <guid isPermaLink="true">${getFullUrl(`/blog/${post.slug}`)}</guid>
       <pubDate>${post.data.publishDate.toUTCString()}</pubDate>
-      <dc:creator><![CDATA[Lit Phansiri]]></dc:creator>
-      <author>lit@phansiri.dev (Lit Phansiri)</author>
+      <dc:creator><![CDATA[${siteConfig.author.name}]]></dc:creator>
+      <author>${siteConfig.author.email} (${siteConfig.author.name})</author>
       <category><![CDATA[${post.data.category}]]></category>
       ${post.data.tags.map(tag => `<category><![CDATA[${tag}]]></category>`).join('')}
-      <enclosure url="https://phansiri.github.io${post.data.image}" type="image/svg+xml" />
+      <enclosure url="${getImageUrl(post.data.image || '')}" type="image/svg+xml" />
     </item>`).join('')}
   </channel>
 </rss>`;

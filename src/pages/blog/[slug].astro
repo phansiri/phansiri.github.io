@@ -2,6 +2,7 @@
 import MainLayout from '../../layouts/main.astro';
 import { getCollection } from 'astro:content';
 import { Button } from '@/components/ui/button';
+import { siteConfig, getFullUrl } from '../../lib/config';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -52,7 +53,7 @@ const structuredData = {
   "author": {
     "@type": "Person",
     "name": post.data.author,
-    "url": "https://phansiri.github.io"
+    "url": siteConfig.url
   },
   "publisher": {
     "@type": "Person",
@@ -62,7 +63,7 @@ const structuredData = {
   "dateModified": post.data.updatedDate?.toISOString() || post.data.publishDate.toISOString(),
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://phansiri.github.io/blog/${post.slug}`
+    "@id": getFullUrl(`/blog/${post.slug}`)
   },
   "keywords": post.data.tags.join(', '),
   "articleSection": post.data.category,
@@ -92,19 +93,19 @@ const structuredData = {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://phansiri.github.io"
+        "item": siteConfig.url
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://phansiri.github.io/blog"
+        "item": getFullUrl("/blog")
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.data.title,
-        "item": `https://phansiri.github.io/blog/${post.slug}`
+        "item": getFullUrl(`/blog/${post.slug}`)
       }
     ]
   })} />
@@ -193,36 +194,6 @@ const structuredData = {
       <div class="prose prose-lg max-w-none dark:prose-invert">
         <Content />
       </div>
-
-      <!-- Article Footer -->
-      <!-- <div class="mt-16 pt-8 border-t">
-        <div class="flex items-center justify-between mb-8">
-          <div class="flex items-center gap-4">
-            <div class="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <span class="text-white font-bold">LP</span>
-            </div>
-            <div>
-              <h3 class="font-semibold">{post.data.author}</h3>
-              <p class="text-sm text-muted-foreground">Full Stack Data Scientist</p>
-            </div>
-          </div>
-          
-          <div class="flex gap-2">
-            <Button variant="outline" size="sm">
-              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
-              </svg>
-              Share
-            </Button>
-            <Button variant="outline" size="sm">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-              </svg>
-              Like
-            </Button>
-          </div>
-        </div>
-      </div> -->
     </div>
   </article>
 

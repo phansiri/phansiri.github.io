@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../lib/config';
+
 export interface Props {
 	title?: string;
 	description?: string;
@@ -6,20 +8,12 @@ export interface Props {
 }
 
 const { 
-	title = "Portfolio", 
-	description = "Developer Portfolio & Blog",
+	title = siteConfig.name, 
+	description = siteConfig.description,
 	currentPath = "/"
 } = Astro.props;
 
-const navigation = [
-	{ name: 'Home', href: '/' },
-	{ name: 'About', href: '/about' },
-	{ name: 'Blog', href: '/blog' },
-	{ name: 'Experiences', href: '/experiences' },
-	{ name: 'Projects', href: '/projects' },
-	{ name: 'Education', href: '/education' },
-	{ name: 'Contact', href: '/contact' },
-];
+const navigation = siteConfig.navigation.main;
 
 const isActive = (href: string) => {
 	return currentPath === href || (href !== '/' && currentPath.startsWith(href));

@@ -1,10 +1,12 @@
 ---
 import MainLayout from '../layouts/main.astro';
 import { Button } from '@/components/ui/button';
+import { siteConfig } from '../lib/config';
+
 ---
 
 <MainLayout 
-	title="Contact - Lit Phansiri" 
+	title={`Contact - ${siteConfig.author.name}`} 
 	description="Connect with Lit Phansiri on LinkedIn for data science collaboration, AI project inquiries, or professional opportunities. Let's build something amazing together!"
 >
 	<!-- Hero Section -->
@@ -32,7 +34,7 @@ import { Button } from '@/components/ui/button';
 						For privacy and security, I prefer to connect through LinkedIn. This allows us to have a professional conversation while maintaining appropriate boundaries and ensuring we're both verified professionals.
 					</p>
 					<a 
-						href="https://www.linkedin.com/in/litthideth-phansiri-6b79b098" 
+						href={siteConfig.social.linkedin} 
 						target="_blank" 
 						rel="noopener noreferrer"
 						class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors"

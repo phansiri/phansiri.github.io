@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { siteConfig } from './lib/config';
 
 // Projects Collection
 const projects = defineCollection({
@@ -68,6 +69,8 @@ const skills = defineCollection({
   })),
 });
 
+const blog_categories = siteConfig.blog_categories.map((category) => category.name) as [string, ...string[]];
+
 // Blog Posts Collection
 const blog = defineCollection({
   type: 'content',
@@ -77,12 +80,12 @@ const blog = defineCollection({
     publishDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     tags: z.array(z.string()),
-    category: z.enum(['AI/ML', 'Computer Systems', 'Data Science', 'Technology', 'Career', 'Tutorial']),
+    category: z.enum(blog_categories),
     featured: z.boolean().default(false),
     readingTime: z.number().optional(), // in minutes
     image: z.string().optional(),
     imageAlt: z.string().optional(),
-    author: z.string().default('Lit Phansiri'),
+    author: z.string().default(siteConfig.author.name),
     draft: z.boolean().default(false),
   }),
 });

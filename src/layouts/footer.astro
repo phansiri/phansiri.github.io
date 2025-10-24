@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from '../lib/config';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -12,7 +13,7 @@ const currentYear = new Date().getFullYear();
 					<div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
 						<span class="text-white font-bold text-sm">LP</span>
 					</div>
-					<h3 class="text-lg font-semibold">Lit Phansiri</h3>
+					<h3 class="text-lg font-semibold">{siteConfig.author.name}</h3>
 				</div>
 				<p class="text-sm text-muted-foreground max-w-xs">
 					Full Stack Data Scientist, U.S. Marine Corps Officer, and UC Berkeley graduate specializing in Generative AI solutions.
@@ -23,11 +24,9 @@ const currentYear = new Date().getFullYear();
 			<div class="space-y-4">
 				<h4 class="text-sm font-semibold">Quick Links</h4>
 				<nav class="flex flex-col space-y-2">
-					<a href="/about" class="text-sm text-muted-foreground hover:text-primary transition-colors">About</a>
-					<a href="/experiences" class="text-sm text-muted-foreground hover:text-primary transition-colors">Experiences</a>
-					<a href="/projects" class="text-sm text-muted-foreground hover:text-primary transition-colors">Projects</a>
-					<a href="/education" class="text-sm text-muted-foreground hover:text-primary transition-colors">Education</a>
-					<a href="/contact" class="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</a>
+					{siteConfig.navigation.main.map((item) => (
+						<a href={item.href} class="text-sm text-muted-foreground hover:text-primary transition-colors">{item.name}</a>
+					))}
 				</nav>
 			</div>
 
@@ -35,12 +34,12 @@ const currentYear = new Date().getFullYear();
 			<div class="space-y-4">
 				<h4 class="text-sm font-semibold">Connect</h4>
 				<div class="space-y-2">
-					<p class="text-sm text-muted-foreground">🌐 <a href="https://phansiri.github.io" class="hover:text-primary transition-colors">phansiri.github.io</a></p>
+					<p class="text-sm text-muted-foreground">🌐 <a href={siteConfig.url} class="hover:text-primary transition-colors">{siteConfig.url.replace('https://', '')}</a></p>
 					<p class="text-sm text-muted-foreground">💼 Connect via LinkedIn below</p>
 				</div>
 				<div class="flex items-center space-x-4">
 					<a 
-						href="https://github.com/phansiri" 
+						href={siteConfig.social.github} 
 						target="_blank" 
 						rel="noopener noreferrer"
 						class="text-muted-foreground hover:text-primary transition-colors"
@@ -51,7 +50,7 @@ const currentYear = new Date().getFullYear();
 						</svg>
 					</a>
 					<a 
-						href="https://www.linkedin.com/in/litthideth-phansiri-6b79b098" 
+						href={siteConfig.social.linkedin} 
 						target="_blank" 
 						rel="noopener noreferrer"
 						class="text-muted-foreground hover:text-primary transition-colors"
@@ -69,7 +68,7 @@ const currentYear = new Date().getFullYear();
 		<div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
 			<!-- Copyright -->
 			<div class="text-sm text-muted-foreground">
-				© {currentYear} Lit Phansiri. All rights reserved.
+				© {currentYear} {siteConfig.author.name}. All rights reserved.
 			</div>
 			
 			<!-- Tech Stack -->

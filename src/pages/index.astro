@@ -1,17 +1,19 @@
 ---
 import MainLayout from '../layouts/main.astro';
 import { Button } from '@/components/ui/button';
+import { siteConfig } from '../lib/config';
+
 ---
 
 <MainLayout 
-	title="Lit Phansiri - Full Stack Data Scientist" 
+	title={`${siteConfig.author.name} - Full Stack Data Scientist`} 
 	description="Full Stack Data Scientist, Active Duty U.S. Marine, and UC Berkeley graduate specializing in cutting-edge Generative AI solutions"
 >
 	<!-- Hero Section -->
 	<section class="container mx-auto px-4 py-16 text-center">
 		<div class="max-w-3xl mx-auto">
 			<h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-				Lit Phansiri
+				{siteConfig.author.name}
 			</h1>
 			<p class="text-xl text-muted-foreground mb-8">
 				Full Stack Data Scientist, Active Duty U.S. Marine, and UC Berkeley graduate specializing in cutting-edge Generative AI solutions.
