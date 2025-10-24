@@ -1,0 +1,398 @@
+---
+import MainLayout from '../../../layouts/main.astro';
+import { getCollection } from 'astro:content';
+import { Button } from '@/components/ui/button';
+import { calculateReadingTime, formatDate, getCategoryEmoji, groupPostsByCategory } from '../../../lib/blog';
+
+// Use Astro's built-in paginate function
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection('blog');
+  const publishedPosts = allPosts
+    .filter(post => !post.data.draft)
+    .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+  // Get all categories and featured posts for the first page
+  const allCategories = [...new Set(publishedPosts.map(post => post.data.category))];
+  const featuredPosts = publishedPosts.filter(post => post.data.featured).slice(0, 2);
+
+  return paginate(publishedPosts, {
+    pageSize: 6, // Posts per page
+    props: {
+      allCategories,
+      featuredPosts
+    }
+  });
+}
+
+// Get the page data from Astro's pagination
+const { page } = Astro.props;
+const { allCategories, featuredPosts } = Astro.props;
+
+// Extract pagination info
+const currentPage = page.currentPage;
+const totalPages = page.lastPage;
+const totalPosts = page.total;
+const startIndex = page.start;
+const endIndex = page.end;
+
+// Group posts by category for current page
+const postsByCategory = groupPostsByCategory(page.data);
+---
+
+<MainLayout 
+  title={`Blog${currentPage > 1 ? ` - Page ${currentPage}` : ''} - Lit Phansiri`}
+  description="Insights on AI/ML, computer systems, and technology from a full-stack data scientist's perspective"
+>
+  <!-- Hero Section -->
+  <section class="container mx-auto px-4 py-16 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        Blog
+      </h1>
+      <p class="text-xl text-muted-foreground mb-8">
+        Deep dives into AI/ML, computer systems, and technology. Sharing insights from building production systems and exploring cutting-edge research.
+      </p>
+      {currentPage > 1 && (
+        <p class="text-sm text-muted-foreground">
+          Showing posts {startIndex + 1} - {Math.min(endIndex, totalPosts)} of {totalPosts}
+        </p>
+      )}
+    </div>
+  </section>
+
+  <!-- Search, Filter, Sort Section -->
+  <section class="container mx-auto px-4 py-8">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-4 mb-8">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search posts..."
+        class="flex-grow p-3 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+      <select
+        id="categoryFilter"
+        class="p-3 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+      >
+        <option value="all">All Categories</option>
+        {allCategories.map(category => (
+          <option value={category}>{getCategoryEmoji(category)} {category}</option>
+        ))}
+      </select>
+      <select
+        id="sortOptions"
+        class="p-3 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+      >
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="title-asc">Title (A-Z)</option>
+        <option value="title-desc">Title (Z-A)</option>
+        <option value="reading-time-asc">Reading Time (Shortest)</option>
+        <option value="reading-time-desc">Reading Time (Longest)</option>
+      </select>
+      <Button id="clearFilters" variant="outline" class="p-3">Clear Filters</Button>
+    </div>
+  </section>
+
+  <!-- Featured Posts Section (only on first page) -->
+  {currentPage === 1 && featuredPosts.length > 0 && (
+    <section class="container mx-auto px-4 py-8">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">Featured Posts</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {featuredPosts.map(post => (
+            <article class="group featured-post" data-category={post.data.category} data-title={post.data.title.toLowerCase()} data-tags={post.data.tags.map(tag => tag.toLowerCase()).join(' ')} data-reading-time={post.data.readingTime}>
+              <a href={`/blog/${post.slug}`} class="block">
+                <div class="bg-card rounded-lg border p-6 hover:border-primary transition-colors">
+                  <div class="flex items-center gap-2 mb-4">
+                    <span class="text-2xl">{getCategoryEmoji(post.data.category)}</span>
+                    <span class="text-sm text-muted-foreground">{post.data.category}</span>
+                    <span class="text-sm text-muted-foreground">•</span>
+                    <span class="text-sm text-muted-foreground">{formatDate(post.data.publishDate)}</span>
+                  </div>
+                  <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-muted-foreground mb-4 line-clamp-3">
+                    {post.data.description}
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4 text-sm text-muted-foreground">
+                      <span>{post.data.readingTime} min read</span>
+                      <div class="flex gap-1">
+                        {post.data.tags.slice(0, 3).map(tag => (
+                          <span class="px-2 py-1 bg-muted rounded text-xs">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <span class="text-primary group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- All Posts Section -->
+  <section class="container mx-auto px-4 py-16">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8">All Posts</h2>
+      <div id="searchResultsInfo" class="text-muted-foreground mb-4 hidden">
+        Showing <span id="resultsCount"></span> results.
+      </div>
+      <div id="posts-container">
+        {Object.entries(postsByCategory).map(([category, categoryPosts]) => (
+          <div class="mb-12 category-section" data-category={category}>
+            <div class="flex items-center gap-3 mb-6">
+              <span class="text-3xl">{getCategoryEmoji(category)}</span>
+              <h3 class="text-2xl font-semibold">{category}</h3>
+              <span class="text-sm text-muted-foreground">(<span class="category-count">{categoryPosts.length}</span> posts)</span>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {categoryPosts.map(post => (
+                <article class="group blog-post" data-category={post.data.category} data-title={post.data.title.toLowerCase()} data-tags={post.data.tags.map(tag => tag.toLowerCase()).join(' ')} data-reading-time={post.data.readingTime}>
+                  <a href={`/blog/${post.slug}`} class="block">
+                    <div class="bg-card rounded-lg border p-6 hover:border-primary transition-colors h-full">
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="text-sm text-muted-foreground">{formatDate(post.data.publishDate)}</span>
+                        <span class="text-sm text-muted-foreground">•</span>
+                        <span class="text-sm text-muted-foreground">{post.data.readingTime} min read</span>
+                      </div>
+                      <h4 class="text-lg font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                        {post.data.title}
+                      </h4>
+                      <p class="text-muted-foreground mb-4 line-clamp-3 text-sm">
+                        {post.data.description}
+                      </p>
+                      <div class="flex flex-wrap gap-1 mb-4">
+                        {post.data.tags.slice(0, 3).map(tag => (
+                          <span class="px-2 py-1 bg-muted rounded text-xs">{tag}</span>
+                        ))}
+                      </div>
+                      <div class="flex items-center justify-between">
+                        <span class="text-sm text-muted-foreground">Read more</span>
+                        <span class="text-primary group-hover:translate-x-1 transition-transform">→</span>
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Pagination -->
+      {totalPages > 1 && (
+        <nav class="flex justify-center items-center gap-2 mt-12" aria-label="Pagination">
+          {page.url.first && (
+            <a
+              href={page.url.first}
+              class="px-4 py-2 rounded-md bg-muted text-muted-foreground hover:bg-muted/80 transition-colors"
+            >
+              First
+            </a>
+          )}
+          {page.url.prev && (
+            <a
+              href={page.url.prev}
+              class="px-4 py-2 rounded-md bg-muted text-muted-foreground hover:bg-muted/80 transition-colors"
+            >
+              Previous
+            </a>
+          )}
+          
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+            <a
+              href={pageNum === 1 ? '/blog' : `/blog/page/${pageNum}`}
+              class={`px-4 py-2 rounded-md transition-colors ${
+                pageNum === currentPage
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
+              }`}
+              aria-current={pageNum === currentPage ? 'page' : false}
+            >
+              {pageNum}
+            </a>
+          ))}
+          
+          {page.url.next && (
+            <a
+              href={page.url.next}
+              class="px-4 py-2 rounded-md bg-muted text-muted-foreground hover:bg-muted/80 transition-colors"
+            >
+              Next
+            </a>
+          )}
+          {page.url.last && (
+            <a
+              href={page.url.last}
+              class="px-4 py-2 rounded-md bg-muted text-muted-foreground hover:bg-muted/80 transition-colors"
+            >
+              Last
+            </a>
+          )}
+        </nav>
+      )}
+    </div>
+  </section>
+
+  <!-- Client-side JavaScript for Search, Filter, Sort -->
+  <script define:vars={{ allCategories: allCategories }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const categoryFilter = document.getElementById('categoryFilter');
+      const sortOptions = document.getElementById('sortOptions');
+      const clearFilters = document.getElementById('clearFilters');
+      const postsContainer = document.getElementById('posts-container');
+      const searchResultsInfo = document.getElementById('searchResultsInfo');
+      const resultsCount = document.getElementById('resultsCount');
+
+      if (!searchInput || !categoryFilter || !sortOptions || !clearFilters || !postsContainer || !searchResultsInfo || !resultsCount) {
+        console.error('One or more elements not found. Search/filter functionality may not work.');
+        return;
+      }
+
+      const allPosts = Array.from(postsContainer.querySelectorAll('.blog-post'));
+      const allCategorySections = Array.from(postsContainer.querySelectorAll('.category-section'));
+
+      function applyFiltersAndSort() {
+        const searchTerm = (searchInput as HTMLInputElement).value.toLowerCase();
+        const selectedCategory = (categoryFilter as HTMLSelectElement).value;
+        const selectedSort = (sortOptions as HTMLSelectElement).value;
+
+        let visiblePosts = allPosts.filter(post => {
+          const postCategory = post.dataset.category;
+          const postTitle = post.dataset.title;
+          const postTags = post.dataset.tags;
+
+          const matchesSearch = !searchTerm || postTitle.includes(searchTerm) || postTags.includes(searchTerm);
+          const matchesCategory = selectedCategory === 'all' || postCategory === selectedCategory;
+
+          return matchesSearch && matchesCategory;
+        });
+
+        // Sort logic
+        visiblePosts.sort((a, b) => {
+          const titleA = a.dataset.title || '';
+          const titleB = b.dataset.title || '';
+          const readingTimeA = parseInt(a.dataset.readingTime || '0');
+          const readingTimeB = parseInt(b.dataset.readingTime || '0');
+          const dateA = new Date(a.querySelector('.text-muted-foreground:first-child')?.textContent || '');
+          const dateB = new Date(b.querySelector('.text-muted-foreground:first-child')?.textContent || '');
+
+          switch (selectedSort) {
+            case 'newest':
+              return dateB.getTime() - dateA.getTime();
+            case 'oldest':
+              return dateA.getTime() - dateB.getTime();
+            case 'title-asc':
+              return titleA.localeCompare(titleB);
+            case 'title-desc':
+              return titleB.localeCompare(titleA);
+            case 'reading-time-asc':
+              return readingTimeA - readingTimeB;
+            case 'reading-time-desc':
+              return readingTimeB - readingTimeA;
+            default:
+              return 0;
+          }
+        });
+
+        // Clear existing posts
+        postsContainer.innerHTML = '';
+
+        if (visiblePosts.length === 0) {
+          postsContainer.innerHTML = '<p class="text-muted-foreground text-center">No posts found matching your criteria.</p>';
+          searchResultsInfo.classList.remove('hidden');
+          (resultsCount as HTMLSpanElement).textContent = '0';
+          return;
+        }
+
+        // Group visible posts by category
+        const groupedVisiblePosts: Record<string, HTMLElement[]> = {};
+        visiblePosts.forEach(post => {
+          const category = post.dataset.category || 'Uncategorized';
+          if (!groupedVisiblePosts[category]) {
+            groupedVisiblePosts[category] = [];
+          }
+          groupedVisiblePosts[category].push(post);
+        });
+
+        // Render grouped posts
+        let totalVisibleCount = 0;
+        Object.keys(groupedVisiblePosts).sort().forEach(category => {
+          const categoryPosts = groupedVisiblePosts[category];
+          totalVisibleCount += categoryPosts.length;
+
+          const categorySection = document.createElement('div');
+          categorySection.className = 'mb-12 category-section';
+          categorySection.dataset.category = category;
+
+          const headerDiv = document.createElement('div');
+          headerDiv.className = 'flex items-center gap-3 mb-6';
+          headerDiv.innerHTML = `
+            <span class="text-3xl">${getCategoryEmoji(category)}</span>
+            <h3 class="text-2xl font-semibold">${category}</h3>
+            <span class="text-sm text-muted-foreground">(<span class="category-count">${categoryPosts.length}</span> posts)</span>
+          `;
+          categorySection.appendChild(headerDiv);
+
+          const gridDiv = document.createElement('div');
+          gridDiv.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-6';
+          categoryPosts.forEach(post => gridDiv.appendChild(post));
+          categorySection.appendChild(gridDiv);
+
+          postsContainer.appendChild(categorySection);
+        });
+
+        searchResultsInfo.classList.remove('hidden');
+        (resultsCount as HTMLSpanElement).textContent = totalVisibleCount.toString();
+      }
+
+      searchInput.addEventListener('input', applyFiltersAndSort);
+      categoryFilter.addEventListener('change', applyFiltersAndSort);
+      sortOptions.addEventListener('change', applyFiltersAndSort);
+      clearFilters.addEventListener('click', () => {
+        (searchInput as HTMLInputElement).value = '';
+        (categoryFilter as HTMLSelectElement).value = 'all';
+        (sortOptions as HTMLSelectElement).value = 'newest';
+        applyFiltersAndSort();
+      });
+
+      // Initial render
+      applyFiltersAndSort();
+    });
+
+    // Utility function for emojis (passed from Astro component)
+    function getCategoryEmoji(category: string): string {
+      const emojis: Record<string, string> = {
+        'AI/ML': '🤖',
+        'Computer Systems': '💻',
+        'Data Science': '📊',
+        'Technology': '⚡',
+        'Career': '🚀',
+        'Tutorial': '📚'
+      };
+      return emojis[category] || '📝';
+    }
+  </script>
+</MainLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

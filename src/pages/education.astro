@@ -1,0 +1,134 @@
+---
+import MainLayout from '../layouts/main.astro';
+import { getCollection } from 'astro:content';
+
+// Get all education and certifications from Content Collections
+const educationCollection = await getCollection('education');
+const certificationsCollection = await getCollection('certifications');
+
+const allEducation = educationCollection[0]?.data || [];
+const certifications = certificationsCollection[0]?.data || [];
+
+// Sort education by graduation date (most recent first)
+const sortedEducation = [...allEducation].sort((a, b) => parseInt(b.gradDate) - parseInt(a.gradDate));
+---
+
+<MainLayout 
+	title="Education - Lit Phansiri" 
+	description="Educational background and certifications of Lit Phansiri, showcasing UC Berkeley data science training and military leadership development"
+>
+	<!-- Hero Section -->
+	<section class="container mx-auto px-4 py-16">
+		<div class="max-w-4xl mx-auto text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-6">Education</h1>
+			<p class="text-xl text-muted-foreground mb-8">
+				From UC Berkeley's Master of Information and Data Science program to specialized cybersecurity training, 
+				my educational journey reflects a commitment to continuous learning and technical excellence.
+			</p>
+		</div>
+	</section>
+
+	<!-- Education Timeline -->
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-4xl mx-auto">
+			<!-- <h2 class="text-3xl font-bold text-center mb-12">Educational Background</h2> -->
+			<div class="space-y-8">
+				{sortedEducation.map((edu, index) => (
+					<div class="bg-card border rounded-lg p-8 hover:shadow-lg transition-shadow">
+						<div class="flex flex-col lg:flex-row lg:items-start gap-6">
+							<div class="flex-shrink-0">
+								<div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+									<span class="text-white font-bold text-xl">{edu.university.charAt(0)}</span>
+								</div>
+							</div>
+							<div class="flex-1">
+								<div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+									<div>
+										<h3 class="text-2xl font-semibold text-primary mb-1">{edu.degree}</h3>
+										<p class="text-lg font-medium">{edu.university}</p>
+										<p class="text-muted-foreground">{edu.concentration}</p>
+									</div>
+									<div class="text-right mt-2 md:mt-0">
+										<p class="text-sm font-medium text-primary">{edu.gradDate}</p>
+									</div>
+								</div>
+								
+								{edu.description && (
+									<p class="text-muted-foreground mb-4">{edu.description}</p>
+								)}
+								
+								{edu.link && (
+									<div class="mt-4">
+										<a 
+											href={edu.link} 
+											target="_blank" 
+											rel="noopener noreferrer"
+											class="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+										>
+											<span class="mr-2">Learn More</span>
+											<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+											</svg>
+										</a>
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Certifications -->
+	<!-- <section class="container mx-auto px-4 pb-16">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-3xl font-bold text-center mb-12">Certifications</h2>
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{certifications.map((cert) => (
+					<div class="bg-card border rounded-lg p-6 hover:shadow-lg transition-shadow">
+						<div class="text-center">
+							<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+								<span class="text-2xl">🏆</span>
+							</div>
+							<h3 class="text-lg font-semibold mb-2">{cert.name}</h3>
+							<p class="text-sm text-muted-foreground mb-2">{cert.issuer}</p>
+							<p class="text-sm font-medium text-primary mb-3">{cert.date}</p>
+							<p class="text-sm text-muted-foreground">{cert.description}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section> -->
+
+	<!-- Learning Philosophy -->
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-4xl mx-auto text-center bg-muted/50 rounded-lg p-8">
+			<h2 class="text-2xl font-bold mb-4">Continuous Learning Philosophy</h2>
+			<p class="text-muted-foreground mb-6">
+				My educational journey reflects a commitment to continuous learning and adaptation. 
+				From military training that emphasized discipline and strategic thinking, to rigorous 
+				academic programs that demanded technical excellence, I've learned that the best 
+				education comes from combining theoretical knowledge with practical application.
+			</p>
+			<div class="grid md:grid-cols-3 gap-6 mt-8">
+				<div>
+					<div class="text-3xl mb-2">🎯</div>
+					<h3 class="font-semibold mb-2">Goal-Oriented</h3>
+					<p class="text-sm text-muted-foreground">Every learning objective is tied to practical outcomes and real-world applications.</p>
+				</div>
+				<div>
+					<div class="text-3xl mb-2">🔄</div>
+					<h3 class="font-semibold mb-2">Adaptive</h3>
+					<p class="text-sm text-muted-foreground">Continuously evolving skills to stay current with rapidly changing technology.</p>
+				</div>
+				<div>
+					<div class="text-3xl mb-2">🤝</div>
+					<h3 class="font-semibold mb-2">Collaborative</h3>
+					<p class="text-sm text-muted-foreground">Learning through teaching others and sharing knowledge with the community.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</MainLayout>

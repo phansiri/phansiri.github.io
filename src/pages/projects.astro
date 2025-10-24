@@ -1,0 +1,110 @@
+---
+import MainLayout from '../layouts/main.astro';
+import { Button } from '@/components/ui/button';
+import { getCollection } from 'astro:content';
+
+// Get all projects from Content Collections
+const projectsCollection = await getCollection('projects');
+const projectsData = projectsCollection[0]?.data || [];
+---
+
+<MainLayout 
+	title="Projects - Lit Phansiri" 
+	description="Explore my portfolio of data science, AI, and full-stack development projects showcasing my expertise in Generative AI and machine learning"
+>
+	<!-- Hero Section -->
+	<section class="container mx-auto px-4 py-16">
+		<div class="max-w-4xl mx-auto text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-6">My Projects</h1>
+			<p class="text-xl text-muted-foreground mb-8">
+				A collection of data science, AI, and full-stack projects that demonstrate my expertise 
+				in Generative AI, machine learning, and creating impactful solutions.
+			</p>
+		</div>
+	</section>
+
+	<!-- All Projects -->
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-7xl mx-auto">
+			<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+				{projectsData.map((project) => (
+					<div class="group bg-card border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+						<div class="aspect-video bg-muted flex items-center justify-center overflow-hidden rounded-t-lg">
+							{project.visual ? (
+								<img 
+									src={project.visual} 
+									alt={project.title} 
+									class="w-full h-full object-contain bg-white/10 project-image" 
+									loading="lazy"
+									decoding="async"
+								/>
+							) : (
+								<div class="text-muted-foreground text-center">
+									<div class="text-4xl mb-2">🚀</div>
+									<p class="text-sm">Project Screenshot</p>
+								</div>
+							)}
+						</div>
+						<div class="p-6">
+							<div class="flex justify-between items-start mb-3">
+								<h3 class="text-lg font-semibold group-hover:text-primary transition-colors">
+									{project.title}
+								</h3>
+								<span class="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+									{project.year}
+								</span>
+							</div>
+							<p class="text-sm text-primary font-medium mb-3">{project.impact}</p>
+							<p class="text-sm text-muted-foreground mb-4 line-clamp-3">
+								{project.summary}
+							</p>
+							<div class="flex flex-wrap gap-1 mb-4">
+								{project.tech?.slice(0, 4).map((tech) => (
+									<span class="px-2 py-1 bg-secondary text-secondary-foreground rounded text-xs">
+										{tech}
+									</span>
+								))}
+								{project.tech && project.tech.length > 4 && (
+									<span class="px-2 py-1 bg-secondary text-secondary-foreground rounded text-xs">
+										+{project.tech.length - 4}
+									</span>
+								)}
+							</div>
+							<div class="flex gap-2">
+								<Button size="sm" className="text-xs flex-1">
+									<a href={project.link} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center">
+										<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+										</svg>
+										View Project
+									</a>
+								</Button>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-4xl mx-auto text-center bg-muted/50 rounded-lg p-8">
+			<h2 class="text-2xl font-bold mb-4">Interested in Working Together?</h2>
+			<p class="text-muted-foreground mb-6">
+				I'm always excited to take on new challenges and collaborate on interesting projects. 
+				Let's discuss how we can work together!
+			</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<Button size="lg" className="text-lg px-8 py-3">
+					<a href="/contact">Start a Project</a>
+				</Button>
+				<Button variant="outline" size="lg" className="text-lg px-8 py-3">
+					<a href="https://github.com/phansiri" target="_blank" rel="noopener noreferrer">
+						View GitHub
+					</a>
+				</Button>
+			</div>
+		</div>
+	</section>
+</MainLayout>

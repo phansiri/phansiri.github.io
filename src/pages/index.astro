@@ -1,0 +1,60 @@
+---
+import MainLayout from '../layouts/main.astro';
+import { Button } from '@/components/ui/button';
+---
+
+<MainLayout 
+	title="Lit Phansiri - Full Stack Data Scientist" 
+	description="Full Stack Data Scientist, Active Duty U.S. Marine, and UC Berkeley graduate specializing in cutting-edge Generative AI solutions"
+>
+	<!-- Hero Section -->
+	<section class="container mx-auto px-4 py-16 text-center">
+		<div class="max-w-3xl mx-auto">
+			<h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+				Lit Phansiri
+			</h1>
+			<p class="text-xl text-muted-foreground mb-8">
+				Full Stack Data Scientist, Active Duty U.S. Marine, and UC Berkeley graduate specializing in cutting-edge Generative AI solutions.
+			</p>
+		</div>
+	</section>
+
+	<!-- Quick Links Section -->
+	<section class="container mx-auto px-4 py-16">
+		<div class="max-w-4xl mx-auto">
+			<h2 class="text-3xl font-bold text-center mb-12">Explore</h2>
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+				<a href="/about" class="group p-6 rounded-lg border hover:border-primary transition-colors">
+					<div class="text-2xl mb-3">👋</div>
+					<h3 class="font-semibold mb-2 group-hover:text-primary transition-colors">About</h3>
+					<p class="text-sm text-muted-foreground">Learn more about my journey and background</p>
+				</a>
+				<a href="/blog" class="group p-6 rounded-lg border hover:border-primary transition-colors">
+					<div class="text-2xl mb-3">📝</div>
+					<h3 class="font-semibold mb-2 group-hover:text-primary transition-colors">Blog</h3>
+					<p class="text-sm text-muted-foreground">Insights on AI/ML, computer systems, and technology</p>
+				</a>
+				<a href="/experiences" class="group p-6 rounded-lg border hover:border-primary transition-colors">
+					<div class="text-2xl mb-3">🎖️</div>
+					<h3 class="font-semibold mb-2 group-hover:text-primary transition-colors">Experiences</h3>
+					<p class="text-sm text-muted-foreground">My professional journey and achievements</p>
+				</a>
+				<a href="/projects" class="group p-6 rounded-lg border hover:border-primary transition-colors">
+					<div class="text-2xl mb-3">🚀</div>
+					<h3 class="font-semibold mb-2 group-hover:text-primary transition-colors">Projects</h3>
+					<p class="text-sm text-muted-foreground">Explore my latest work and side projects</p>
+				</a>
+				<a href="/education" class="group p-6 rounded-lg border hover:border-primary transition-colors">
+					<div class="text-2xl mb-3">🎓</div>
+					<h3 class="font-semibold mb-2 group-hover:text-primary transition-colors">Education</h3>
+					<p class="text-sm text-muted-foreground">Academic background and certifications</p>
+				</a>
+				<a href="/contact" class="group p-6 rounded-lg border hover:border-primary transition-colors">
+					<div class="text-2xl mb-3">💬</div>
+					<h3 class="font-semibold mb-2 group-hover:text-primary transition-colors">Contact</h3>
+					<p class="text-sm text-muted-foreground">Get in touch and start a conversation</p>
+				</a>
+			</div>
+		</div>
+	</section>
+</MainLayout>

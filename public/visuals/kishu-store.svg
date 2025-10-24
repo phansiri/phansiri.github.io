@@ -1,0 +1,14 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D9488;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#grad2)"/>
+  <text x="300" y="180" font-family="Arial, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="white">Kishu Uuoko</text>
+  <text x="300" y="220" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="white" opacity="0.9">Fish Store Website</text>
+  <text x="300" y="250" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white" opacity="0.7">2023</text>
+  <rect x="200" y="280" width="200" height="80" rx="10" fill="white" opacity="0.2"/>
+  <text x="300" y="320" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white">Modern Web Design</text>
+</svg>
