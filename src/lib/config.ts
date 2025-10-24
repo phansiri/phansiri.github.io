@@ -11,7 +11,7 @@ export const siteConfig = {
     email: 'lphansiri@gmail.com',
     image: '/portfolio/lit_profile.png',
     github: 'https://github.com/phansiri',
-    linkedin: 'https://www.linkedin.com/in/litthideth-phansiri-6b79b098/,
+    linkedin: 'https://www.linkedin.com/in/litthideth-phansiri-6b79b098/'
   },
   
   // Site Features
@@ -25,14 +25,23 @@ export const siteConfig = {
   // Social Links
   social: {
     github: 'https://github.com/phansiri',
-    linkedin: 'https://www.linkedin.com/in/litthideth-phansiri-6b79b098/',
+    linkedin: 'https://www.linkedin.com/in/litthideth-phansiri-6b79b098/'
   },
   
   // Future extensibility - you can add more config here
   seo: {
     defaultImage: '/portfolio/lit_profile.png',
-    twitterHandle: '@litphansiri', // if you have one
+    twitterHandle: '@lphansiri', // if you have one
   },
+
+  blog_categories: [
+    { name: 'AI/ML', emoji: '🤖' },
+    { name: 'Computer Systems', emoji: '💻' },
+    { name: 'Data Science', emoji: '📊' },
+    { name: 'Technology', emoji: '⚡' },
+    { name: 'Career', emoji: '🚀' },
+    { name: 'Tutorial', emoji: '📚' },
+  ],
   
   // Navigation
   navigation: {
