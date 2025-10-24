@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from './header.astro';
 import Footer from './footer.astro';
+import { siteConfig, getFullUrl, getImageUrl } from '../lib/config';
 
 export interface Props {
 	title?: string;
@@ -34,7 +35,7 @@ const {
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-const siteURL = Astro.site || 'https://phansiri.github.io';
+const siteURL = Astro.site || siteConfig.url;
 const fullImageURL = new URL(image, siteURL).href;
 const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 ---
@@ -153,12 +154,12 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "Person",
-			"name": "Lit Phansiri",
-			"url": "https://phansiri.github.io",
-			"image": "https://phansiri.github.io/portfolio/lit_profile.png",
+			"name": siteConfig.author.name,
+			"url": siteConfig.url,
+			"image": getImageUrl(siteConfig.author.image),
 			"sameAs": [
-				"https://github.com/phansiri",
-				"https://linkedin.com/in/litphansiri",
+				siteConfig.social.github,
+				siteConfig.social.linkedin,
 				"https://twitter.com/litphansiri"
 			],
 			"jobTitle": "Full Stack Data Scientist",
@@ -184,20 +185,20 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "WebSite",
-			"name": "Lit Phansiri Portfolio",
-			"url": "https://phansiri.github.io",
-			"description": "Portfolio and blog of Lit Phansiri, Full Stack Data Scientist",
+			"name": siteConfig.name,
+			"url": siteConfig.url,
+			"description": siteConfig.description,
 			"author": {
 				"@type": "Person",
-				"name": "Lit Phansiri"
+				"name": siteConfig.author.name
 			},
 			"publisher": {
 				"@type": "Person",
-				"name": "Lit Phansiri"
+				"name": siteConfig.author.name
 			},
 			"potentialAction": {
 				"@type": "SearchAction",
-				"target": "https://phansiri.github.io/blog?q={search_term_string}",
+				"target": getFullUrl("/blog?q={search_term_string}"),
 				"query-input": "required name=search_term_string"
 			}
 		})} />

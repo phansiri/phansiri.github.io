@@ -1,14 +1,15 @@
 // @ts-check
 
-import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import mermaid from 'astro-mermaid';
+import tailwindcss from '@tailwindcss/vite';
+import { siteConfig } from './src/lib/config.ts';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://phansiri.github.io/',
+  site: siteConfig.url + '/',
   
   // Performance optimizations
   compressHTML: true,
@@ -22,9 +23,7 @@ export default defineConfig({
   // Vite configuration
   vite: {
     plugins: [
-      tailwindcss({
-        plugins: ['@tailwindcss/typography']
-      })
+      tailwindcss()
     ],
     build: {
       cssMinify: true,
