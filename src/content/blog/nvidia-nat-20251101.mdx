@@ -1,13 +1,13 @@
 ---
-title: "NVIDIA NeMo Agent Toolkit Tutorial 1.3.0 with LangChain/LangGraph in November 2025"
-description: "Learn how to use the Nvidia NeMo Agent Toolkit to build a basic agent with web search and summary capabilities."
+title: "NVIDIA NeMo Agent Toolkit Tutorial 1.3 with LangChain/LangGraph in November 2025"
+description: "Learn how to use NVIDIA NeMo Agent Toolkit to build a production-ready agent with web search and datetime capabilities integrating LangChain/LangGraph."
 publishDate: 2025-11-1
 updatedDate: 2025-11-1
 tags: ["Nvidia", "NeMo Agent Toolkit", "Tutorial", "Web Search", "DuckDuckGo Search", "Summary", "Agent"]
 category: "AI/ML"
 featured: false
 readingTime: 25
-image: "/blog/nvidia-nat-part1.png"
+image: "/blog/nvidia-nat.png"
 imageAlt: "Nvidia NeMo Agent Toolkit workflow diagram showing model-driven agent architecture"
 author: "Lit Phansiri"
 draft: false
@@ -99,7 +99,7 @@ This simple agent demonstrates several key NAT advantages that would require sig
 ### Example Use Cases
 
 Our agent will be able to answer questions like:
-- "who won the Chiefs versus Commanders football game? what was the score and who was the mvp?"
+- "Who won the Chiefs versus Commanders football game? What was the score and who was the MVP?"
 - "What are the current top headlines in technology?"
 - "Find recent news about AI agents and developments in the past month"
 
@@ -114,7 +114,7 @@ Before we start building, we need to install NVIDIA NeMo Agent Toolkit and its d
 - **Python 3.11, 3.12, or 3.13** ([supported platforms](https://docs.nvidia.com/nemo/agent-toolkit/latest/quick-start/installing.html))
 - **uv** (version 0.5.4 or later) - We'll use `uv` for fast, reliable package management
 
-If you don't have `uv` installed, you can install it using or go to [uv](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer) for your installationchoice:
+If you don't have `uv` installed, you can install it using or go to [uv installation guide](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer) for your installation choice:
 
 ```bash
 pipx install uv
@@ -146,7 +146,7 @@ nat --version
 
 You should see the NAT help message and version information, confirming the installation was successful.
 
-### Create a new workflow project
+### Create a New Workflow Project
 
 NVIDIA NeMo Agent Toolkit provides a powerful scaffolding command that creates a complete, production-ready workflow structure for you. According to the [official tutorial guide](https://docs.nvidia.com/nemo/agent-toolkit/latest/tutorials/create-a-new-workflow.html), the `nat workflow create` command generates an organized project structure that separates concerns and makes customization straightforward.
 
@@ -250,7 +250,8 @@ For our web search functionality, we'll also need DuckDuckGo Search. The package
 ```bash
 uv add install ddgs
 ```
----
+
+## Customize the Workflow
 
 ### Creating the Web Search Agent
 
@@ -419,10 +420,10 @@ llm = await _builder.get_llm(_config.llm_ref, wrapper_type=LLMFrameworkEnum.LANG
 ```
 
 **Benefits:**
-1. **Configuration-driven**: LLM and tools come from `config.yml`, not hardcoded
-2. **Framework abstraction**: `wrapper_type=LLMFrameworkEnum.LANGCHAIN` means you get LangChain objects, but NAT wraps them for observability
-3. **Automatic tracking**: NAT logs which tools were called, how long they took, and what tokens were used
-4. **Easy swapping**: Change `config.yml` to use a different LLM or tool set without touching code
+1. **Configuration-driven**: LLM and tools come from `config.yml`, not hardcoded.
+2. **Framework abstraction**: `wrapper_type=LLMFrameworkEnum.LANGCHAIN` means you get LangChain objects, but NAT wraps them for observability.
+3. **Automatic tracking**: NAT logs which tools were called, how long they took, and what tokens were used.
+4. **Easy swapping**: Change `config.yml` to use a different LLM or tool set without touching code.
 
 **`_config.tools_ref`**: This is a list of `FunctionRef` objects from your config. Each reference points to a tool function (like `web_search` or `current_datetime`) defined elsewhere. Builder resolves these references and returns the actual LangChain tool objects.
 
@@ -484,7 +485,7 @@ NAT uses a generator pattern (`yield`) instead of returning a value directly. Th
 
 **The `_response_fn` closure**: This inner function captures the `agent_executor` (which contains your configured LangChain agent). When NAT calls this function later, it invokes your LangChain agent with the provided input message.
 
-#### Why This Structure Matters
+##### Why This Structure Matters
 
 This pattern—configuration class, registration decorator, Builder dependency injection, and function yielding—is what makes NAT powerful:
 
@@ -557,7 +558,6 @@ This tells the code linter (flake8) to ignore this file. Why? Because this file 
 **Why this structure helps:**
 
 - **Separation of concerns**: Registration logic is in the decorator, not in `register.py`. The `register.py` file is just a manifest of what functions exist.
-
 - **Easy to extend**: Want to add more functions? Just import them in `register.py`:
 
 ```python
@@ -590,7 +590,7 @@ All of this happens automatically—you never manually wire functions together.
 
 **Key takeaway**: The `register.py` file is minimal by design. It's not where you write logic—it's where you declare what functions exist. The actual registration happens automatically via Python decorators when the module is imported. This is NAT's "convention over configuration" approach: follow the pattern, and registration happens automatically.
 
-##### Configuring the Workflow: `config.yml`
+#### Configuring the Workflow: `config.yml`
 
 Now let's configure our workflow using `src/web_search_agent/configs/config.yml`. This is where we wire everything together—defining LLMs, tools, and how they connect. Here's the configuration file:
 
@@ -632,7 +632,7 @@ workflow:
 
 Let's break down each section to understand **why** NAT structures configurations this way:
 
-##### Understanding the Configuration Structure
+#### Understanding the Configuration Structure
 
 NAT uses a hierarchical configuration structure with clear sections. Each section defines a type of component that can be referenced elsewhere. Here's what each section does:
 
@@ -653,9 +653,9 @@ functions:
 - **Function names as references**: The key (`datetime`) becomes a reference that can be used elsewhere. When you write `tools_ref: [datetime]`, NAT looks up this name in the `functions:` section.
 
 **Why NAT uses this pattern:**
-- **Separation of concerns**: Tools are defined once, referenced many times
-- **Easy swapping**: Change `_type: current_datetime` to a custom datetime function without changing code
-- **Composition**: Multiple workflows can reuse the same function definitions
+- **Separation of concerns**: Tools are defined once, referenced many times.
+- **Easy swapping**: Change `_type: current_datetime` to a custom datetime function without changing code.
+- **Composition**: Multiple workflows can reuse the same function definitions.
 
 **2. `llms:` — LLM Configuration**
 
@@ -699,9 +699,9 @@ llms:
 ```
 
 **Benefits:**
-- **Swap LLMs without code changes**: Change `llm_ref: docker_llm` to `llm_ref: niprgpt_llm` to use a different LLM
-- **Environment-specific configs**: Different config files can use different LLMs (local vs. cloud)
-- **Automatic observability**: NAT tracks which LLM was used for each execution automatically
+- **Swap LLMs without code changes**: Change `llm_ref: docker_llm` to `llm_ref: niprgpt_llm` to use a different LLM.
+- **Environment-specific configs**: Different config files can use different LLMs (local vs. cloud).
+- **Automatic observability**: NAT tracks which LLM was used for each execution automatically.
 
 **3. `niprgpt_llm:` — Alternate LLM Configuration with Environment Variables**
 
@@ -833,12 +833,12 @@ workflow:
 ```
 
 **Benefits:**
-1. **Configuration-driven**: Swap LLMs, tools, and parameters via config without code changes
-2. **Automatic validation**: NAT validates references exist and types match
-3. **Observability**: NAT tracks which LLM and tools were used automatically
-4. **Composition**: Multiple workflows can share the same LLM and tool definitions
+1. **Configuration-driven**: Swap LLMs, tools, and parameters via config without code changes.
+2. **Automatic validation**: NAT validates references exist and types match.
+3. **Observability**: NAT tracks which LLM and tools were used automatically.
+4. **Composition**: Multiple workflows can share the same LLM and tool definitions.
 
-#### How the Configuration Connects to Your Code
+##### How the Configuration Connects to Your Code
 
 Let's trace how this configuration connects to the code we wrote:
 
@@ -886,15 +886,15 @@ Let's trace how this configuration connects to the code we wrote:
 
 **Key insight**: The configuration file is the **glue** that connects your code to NAT's infrastructure. It's not just settings—it's a declarative way to define dependencies, swap components, and enable automatic observability.
 
-#### Why This Structure Matters
+##### Why This Structure Matters
 
 This configuration pattern is what makes NAT powerful:
 
-1. **Separation of concerns**: Components (LLMs, tools) are defined separately from how they're used (workflow)
-2. **Configuration-driven**: Swap components without code changes
-3. **Automatic validation**: NAT validates references and types at startup
-4. **Observability by default**: NAT tracks which components were used automatically
-5. **Composability**: Reuse LLM and tool definitions across multiple workflows
+1. **Separation of concerns**: Components (LLMs, tools) are defined separately from how they're used (workflow).
+2. **Configuration-driven**: Swap components without code changes.
+3. **Automatic validation**: NAT validates references and types at startup.
+4. **Observability by default**: NAT tracks which components were used automatically.
+5. **Composability**: Reuse LLM and tool definitions across multiple workflows.
 
 **What's next:** With the configuration in place, our agent is now ready to run. The agent will use the `docker_llm` and the `datetime` tool to answer questions. We can add additional tools later as needed.
 
@@ -955,9 +955,9 @@ Workflow Result:
 ```
 
 **What the output tells you:**
-- **Configuration Summary**: NAT validates your config and shows what components it detected (1 function: `datetime`, 2 LLMs: `docker_llm` and `niprgpt_llm`, 1 embedder: `docker_embedder`)
-- **Workflow Result**: The agent's response to your input query
-- **Timestamps**: Each operation is logged with timestamps for observability
+- **Configuration Summary**: NAT validates your config and shows what components it detected (1 function: `datetime`, 2 LLMs: `docker_llm` and `niprgpt_llm`, 1 embedder: `docker_embedder`).
+- **Workflow Result**: The agent's response to your input query.
+- **Timestamps**: Each operation is logged with timestamps for observability.
 
 **2. `nat eval` — Evaluate Workflow Performance**
 
@@ -990,7 +990,7 @@ nat eval --config_file=src/web_search_agent/configs/config.yml
 2025-11-01 11:43:12 - INFO     - nat.eval.evaluate:484 - No dataset found, nothing to evaluate
 ```
 
-**Note**: For `nat eval` to work, you need to configure evaluation datasets in your config file. Without a dataset configured, NAT will report "No dataset found, nothing to evaluate". We'll cover evaluation setup in a future tutorial, but you can add evaluation datasets to your config file to test your workflow against test cases and measure performance.
+**Note**: For `nat eval` to work, you need to configure evaluation datasets in your config file. Without a dataset configured, NAT will report "No dataset found, nothing to evaluate." You can add evaluation datasets to your config file to test your workflow against test cases and measure performance.
 
 **3. `nat serve` — Start an API Server**
 
@@ -1051,13 +1051,13 @@ NAT's API server provides multiple endpoints:
 - **`/v1/chat/completions`**: OpenAI-compatible chat completions endpoint
 
 **Benefits of using `nat serve`:**
-- **Scalability**: Handle multiple concurrent requests (I will deep dive into this in a future tutorial)
-- **Observability**: NAT tracks all requests automatically (I will deep dive into this in a future tutorial)
+- **Scalability**: Handle multiple concurrent requests
+- **Observability**: NAT tracks all requests automatically
 - **Integration**: Easy to integrate with existing systems
 - **UI access**: Use NAT's built-in web UI to interact with your workflow
-- **Production-ready**: Includes error handling, logging, and monitoring (I will deep dive into this in a future tutorial)
+- **Production-ready**: Includes error handling, logging, and monitoring
 
-#### Choosing the Right Command
+##### Choosing the Right Command
 
 | Use Case | Command | Why |
 |----------|---------|-----|
@@ -1070,7 +1070,7 @@ NAT's API server provides multiple endpoints:
 
 **For this tutorial:** Start with `nat run` to test your workflow, then use `nat serve` if you want to access it via HTTP or use NAT's web UI.
 
-### Creating the Web Search Tool
+#### Creating the Web Search Tool
 
 Now let's add web search functionality to our agent. We'll create a custom tool that uses DuckDuckGo Search to query the web. Since we've already covered the NAT function pattern, we'll focus on what's new here.
 
