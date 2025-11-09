@@ -133,7 +133,7 @@ print(response.message['content'][0]['text'])
 ```
 
 ### Output Example
-```text
+```bash
 As of today, October 25, 2025, the current president of the United States is Donald J. Trump. He took office on January 20, 2025.
 
 Sources:
@@ -240,7 +240,7 @@ result = manual_orchestrate("who is the current president of the united states? 
 ```
 
 Output of the Manual - Custom Workflow Logic:
-```text
+```bash
 
 Tool #2: duckduckgo_search
 Based on the information available, the current president of the United States as of October 25, 2025, is Donald J. Trump. He has been serving as the 47th president since January 20, 2025.
@@ -260,7 +260,7 @@ Formatted Output:
 ```python
 result.message['content'][0]['text']
 ```
-```text
+```bash
 "Ahoy there, ye scurvy dog! \n\nAs of today, October 25, 2025, the current president of the United States be none other than Donald J. Trump, who's been in charge since January 20, 2025, as the 47th president. Aye, and he's been sailing the seas of politics with the same vigor as a pirate on the high seas!\n\nSo, there ye have it, matey. The president be Trump, and he's been steering the ship of state since the new year. Now, if ye'll excuse me, I've got to go find me some treasure and avoid any landlubbers who might be after me rum. \n\nAh, the life of a pirate be much more exciting than that of a president, wouldn't ye say? 🏴\u200d☠️"
 
 ```
