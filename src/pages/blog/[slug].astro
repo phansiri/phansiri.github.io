@@ -381,26 +381,48 @@ const structuredData = {
   /* Theme-specific inline code adjustments */
   :global(.dark .prose code) {
     font-weight: 300;
-    color: oklch(0.8 0 0); /* Softer white for inline code in dark mode */
+    color: hsl(var(--foreground));
   }
 
   :global(:root:not(.dark) .prose code) {
     font-weight: 400;
-    color: oklch(0.25 0 0); /* Slightly softer black for inline code in light mode */
+    color: hsl(var(--foreground));
   }
 
-  /* Dark mode code block color adjustments */
+  /* Dark mode code block color adjustments - use CSS variables for theme adaptation */
   :global(.dark .prose pre code) {
-    color: oklch(0.8 0 0); /* Softer white for code blocks in dark mode */
+    color: hsl(var(--foreground)) !important;
   }
 
   :global(.dark .prose pre) {
-    color: oklch(0.8 0 0); /* Softer white for pre blocks in dark mode */
+    color: hsl(var(--foreground)) !important;
   }
 
-  /* Light mode code block color adjustments */
+  /* Light mode code block color adjustments - use CSS variables for theme adaptation */
   :global(:root:not(.dark) .prose pre code) {
-    color: oklch(0.25 0 0); /* Slightly softer black for code blocks in light mode */
+    color: hsl(var(--foreground)) !important;
+  }
+
+  :global(:root:not(.dark) .prose pre) {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  /* Ensure plain code blocks (without .astro-code) get proper colors */
+  :global(.prose pre:not(.astro-code)) {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  :global(.prose pre:not(.astro-code) code) {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  /* Override any inline styles that might be applied */
+  :global(.prose pre[style*="color"]) {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  :global(.prose pre code[style*="color"]) {
+    color: hsl(var(--foreground)) !important;
   }
 
   /* Table styling */
@@ -438,9 +460,5 @@ const structuredData = {
 
   :global(.prose tbody tr:hover) {
     background-color: hsl(var(--muted) / 0.5);
-  }
-
-  :global(:root:not(.dark) .prose pre) {
-    color: oklch(0.25 0 0); /* Slightly softer black for pre blocks in light mode */
   }
 </style>
