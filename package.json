@@ -17,7 +17,7 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "astro": "^5.15.1",
+    "astro": "^5.15.6",
     "astro-mermaid": "^1.1.0",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
