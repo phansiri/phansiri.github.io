@@ -9,15 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.8",
-    "@astrojs/react": "^4.4.0",
+    "@astrojs/mdx": "^4.3.12",
+    "@astrojs/react": "^4.4.2",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.14",
     "@types/canvas-confetti": "^1.9.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "astro": "^5.15.6",
+    "astro": "^5.16.0",
     "astro-mermaid": "^1.1.0",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
