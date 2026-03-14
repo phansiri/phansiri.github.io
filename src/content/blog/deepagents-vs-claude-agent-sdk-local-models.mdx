@@ -1,14 +1,14 @@
 ---
-title: "LangChain Deep Agents vs Claude Agent SDK: Which Framework Wins for Local Models?"
-description: "A practical comparison of LangChain's Deep Agents SDK and Anthropic's Claude Agent SDK, with a focus on tokens per second, time to first token, and running small language models locally via LM Studio."
+title: "LangChain Deep Agents vs Claude Agent SDK: Which Framework Works Well for Local Models?"
+description: "A practical comparison of LangChain's Deep Agents SDK and Anthropic's Claude Agent SDK, with a focus on running small language models locally via LM Studio."
 publishDate: 2026-03-10
 updatedDate: 2026-03-11
 tags: ["LangChain", "Deep Agents", "Claude Agent SDK", "LM Studio", "Local LLMs", "AI Agents", "Benchmarks"]
 category: "AI/ML"
 featured: true
 readingTime: 14
-image: "/blog/deepagents-vs-claude-agent-sdk.gif"
-imageAlt: "Side-by-side diagram of LangChain Deep Agents and Claude Agent SDK architectures"
+image: "/blog/deepagents-vs-claude-agent-sdk-local-models.png"
+imageAlt: "Side-by-side diagram of LangChain Deep Agents and Claude Agent SDK architectures - Gemini Banana generated image"
 author: "Lit Phansiri"
 draft: false
 ---
@@ -17,7 +17,7 @@ Two of the most interesting agent frameworks right now take very different appro
 
 Here's the twist: you can actually run *both* against a local model. LM Studio now ships with three server APIs — its own native REST API, an **OpenAI-compatible endpoint** (`/v1/chat/completions`), and an **Anthropic-compatible endpoint** (`/v1/messages`) — which means any tool built for the Anthropic SDK can be redirected to local hardware with just two environment variable changes. That opens up more options than either framework's marketing suggests.
 
-This post explains what each framework is, what it actually does (backed by their official docs and GitHub repos), and shares real benchmark numbers — both frameworks tested **only against a local model** on an Apple M4 Max. No cloud API was used.
+This post explains what each framework is, what it actually does (backed by their official docs and GitHub repos), and shares opinionated benchmark numbers — both frameworks tested **only against a local model** on an Apple M4 Max. No cloud API was used.
 
 > **New to agents?** Think of an AI agent as a loop: a model receives a task, chooses a tool (search the web, read a file, run a command), executes it, sees the result, and repeats until done. A framework handles that loop and provides the tools so you don't have to build everything from scratch.
 
@@ -43,7 +43,7 @@ OPENAI_MODEL=openai:qwen/qwen3.5-35b-a3b
 LM_STUDIO_MODEL=qwen/qwen3.5-35b-a3b
 ```
 
-`ANTHROPIC_BASE_URL` and `ANTHROPIC_AUTH_TOKEN` redirect the Anthropic Claude Agent SDK to LM Studio's `/v1/messages` endpoint instead of Anthropic's cloud. `OPENAI_BASE_URL` does the same for the OpenAI SDK via `/v1/chat/completions`. Both point at the same local model — they just speak different wire protocols.
+`ANTHROPIC_BASE_URL` and `ANTHROPIC_AUTH_TOKEN` redirect the Anthropic Claude Agent SDK to LM Studio's `/v1/messages` endpoint instead of Anthropic's cloud. `OPENAI_BASE_URL` does the same for the OpenAI SDK via `/v1/chat/completions`. Both point at the same local model — they just speak different wire protocols (but goes to the same lm studio server).
 
 ---
 
@@ -207,8 +207,8 @@ A few important caveats to understand before using this setup:
 
 | | Deep Agents SDK | Claude Agent SDK |
 |---|---|---|
-| **Primary model target** | Any OpenAI-compatible endpoint | Claude (+ LM Studio via Anthropic-compat) |
-| **Local models (LM Studio, Ollama)** | ✅ Via `/v1/chat/completions` | ✅ Via `/v1/messages` (Anthropic-compat) |
+| **Primary model target** | Any OpenAI-compatible endpoint | Claude (+ LM Studio via Anthropic-compatible endpoint) |
+| **Local models (LM Studio, Ollama)** | ✅ Via `/v1/chat/completions` | ✅ Via `/v1/messages` (Anthropic-compatible) |
 | **Fully offline / air-gapped** | ✅ Well-documented, tested | ⚠️ Works, less tested with local models |
 | **API key required** | ❌ No (local) | ❌ No (local) / ✅ Yes (Anthropic cloud) |
 | **Shell / Bash execution** | ✅ `execute` via `LocalShellBackend` or sandbox | ✅ `Bash` built-in, zero config |
@@ -237,6 +237,7 @@ All three configurations in this benchmark run against the **same local model on
 **Local model:** `qwen/qwen3.5-35b-a3b` GGUF in LM Studio  
 **Rounds:** 3 total, warmup round 1 excluded from all averages  
 **Samples used:** Rounds 2 and 3, all prompts (3 prompts × 2 rounds = 6 samples per framework)
+ - *Very SMALL sample size so take these numbers with a grain of salt*
 
 Three prompts of increasing complexity:
 
@@ -310,7 +311,7 @@ cd <GH repo>
 # Install dependencies
 uv sync
 
-# Copy example.env to .env and fill in your model name
+# Copy example.env to .env and fill in the information
 cp example.env .env
 ```
 
