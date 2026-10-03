@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 
 export interface BlogPost {
-  slug: string;
+  id: string;
   data: {
     title: string;
     description: string;
