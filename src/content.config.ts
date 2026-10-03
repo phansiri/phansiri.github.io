@@ -1,10 +1,11 @@
 import { defineCollection, z } from 'astro:content';
-import { siteConfig } from './lib/config';
+import { glob, file } from 'astro/loaders';
+import { siteConfig } from './lib/config.ts';
 
 // Projects Collection
 const projects = defineCollection({
-  type: 'data',
-  schema: z.array(z.object({
+  loader: file('src/content/projects/projects.json'),
+  schema: z.object({
     id: z.string(),
     title: z.string(),
     impact: z.string(),
@@ -14,13 +15,13 @@ const projects = defineCollection({
     summary: z.string(),
     link: z.string().url(),
     priority: z.boolean(),
-  })),
+  }),
 });
 
 // Experiences Collection
 const experiences = defineCollection({
-  type: 'data',
-  schema: z.array(z.object({
+  loader: file('src/content/experiences/experiences.json'),
+  schema: z.object({
     id: z.string(),
     title: z.string(),
     company: z.string(),
@@ -29,13 +30,13 @@ const experiences = defineCollection({
     description: z.string(),
     achievements: z.array(z.string()),
     technologies: z.array(z.string()),
-  })),
+  }),
 });
 
 // Education Collection
 const education = defineCollection({
-  type: 'data',
-  schema: z.array(z.object({
+  loader: file('src/content/education/education.json'),
+  schema: z.object({
     id: z.string(),
     university: z.string(),
     logo: z.string(),
@@ -44,36 +45,36 @@ const education = defineCollection({
     gradDate: z.string(),
     description: z.string().optional(),
     link: z.string().url().optional(),
-  })),
+  }),
 });
 
 // Certifications Collection
 const certifications = defineCollection({
-  type: 'data',
-  schema: z.array(z.object({
+  loader: file('src/content/certifications/certifications.json'),
+  schema: z.object({
     id: z.string(),
     name: z.string(),
     issuer: z.string(),
     date: z.string(),
     description: z.string(),
-  })),
+  }),
 });
 
 // Skills Collection
 const skills = defineCollection({
-  type: 'data',
-  schema: z.array(z.object({
+  loader: file('src/content/skills/skills.json'),
+  schema: z.object({
     id: z.string(),
     category: z.string(),
     skills: z.array(z.string()),
-  })),
+  }),
 });
 
 const blog_categories = siteConfig.blog_categories.map((category) => category.name) as [string, ...string[]];
 
 // Blog Posts Collection
 const blog = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),

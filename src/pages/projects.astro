@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button';
 import { getCollection } from 'astro:content';
 
 // Get all projects from Content Collections
-const projectsCollection = await getCollection('projects');
-const projectsData = projectsCollection[0]?.data || [];
+const projectsData = (await getCollection('projects')).map((entry) => entry.data);
 ---
 
 <MainLayout 

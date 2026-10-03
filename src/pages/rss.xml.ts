@@ -36,8 +36,8 @@ export async function GET() {
       <title><![CDATA[${post.data.title}]]></title>
       <description><![CDATA[${post.data.description}]]></description>
       <content:encoded><![CDATA[${post.data.description}]]></content:encoded>
-      <link>${getFullUrl(`/blog/${post.slug}`)}</link>
-      <guid isPermaLink="true">${getFullUrl(`/blog/${post.slug}`)}</guid>
+      <link>${getFullUrl(`/blog/${post.id}`)}</link>
+      <guid isPermaLink="true">${getFullUrl(`/blog/${post.id}`)}</guid>
       <pubDate>${post.data.publishDate.toUTCString()}</pubDate>
       <dc:creator><![CDATA[${siteConfig.author.name}]]></dc:creator>
       <author>${siteConfig.author.email} (${siteConfig.author.name})</author>

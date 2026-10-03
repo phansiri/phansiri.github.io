@@ -58,7 +58,7 @@ export async function GET() {
   </url>
   ${publishedPosts.map(post => `
   <url>
-    <loc>${getFullUrl(`/blog/${post.slug}`)}</loc>
+    <loc>${getFullUrl(`/blog/${post.id}`)}</loc>
     <lastmod>${post.data.updatedDate?.toISOString() || post.data.publishDate.toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

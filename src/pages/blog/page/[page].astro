@@ -101,7 +101,7 @@ const postsByCategory = groupPostsByCategory(page.data);
         <div class="grid md:grid-cols-2 gap-6">
           {featuredPosts.map(post => (
             <article class="group featured-post" data-category={post.data.category} data-title={post.data.title.toLowerCase()} data-tags={post.data.tags.map(tag => tag.toLowerCase()).join(' ')} data-reading-time={post.data.readingTime}>
-              <a href={`/blog/${post.slug}`} class="block">
+              <a href={`/blog/${post.id}`} class="block">
                 <div class="bg-card rounded-lg border p-6 hover:border-primary transition-colors">
                   <div class="flex items-center gap-2 mb-4">
                     <span class="text-2xl">{getCategoryEmoji(post.data.category)}</span>
@@ -153,7 +153,7 @@ const postsByCategory = groupPostsByCategory(page.data);
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {categoryPosts.map(post => (
                 <article class="group blog-post" data-category={post.data.category} data-title={post.data.title.toLowerCase()} data-tags={post.data.tags.map(tag => tag.toLowerCase()).join(' ')} data-reading-time={post.data.readingTime}>
-                  <a href={`/blog/${post.slug}`} class="block">
+                  <a href={`/blog/${post.id}`} class="block">
                     <div class="bg-card rounded-lg border p-6 hover:border-primary transition-colors h-full">
                       <div class="flex items-center gap-2 mb-3">
                         <span class="text-sm text-muted-foreground">{formatDate(post.data.publishDate)}</span>

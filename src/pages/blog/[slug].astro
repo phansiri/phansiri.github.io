@@ -1,24 +1,24 @@
 ---
 import MainLayout from '../../layouts/main.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { Button } from '@/components/ui/button';
 import { siteConfig, getFullUrl } from '../../lib/config';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 // Get related posts
 const allPosts = await getCollection('blog');
 const relatedPosts = allPosts
-  .filter(p => p.slug !== post.slug && !p.data.draft)
+  .filter(p => p.id !== post.id && !p.data.draft)
   .filter(p => p.data.category === post.data.category || p.data.tags.some(tag => post.data.tags.includes(tag)))
   .slice(0, 3);
 
@@ -63,7 +63,7 @@ const structuredData = {
   "dateModified": post.data.updatedDate?.toISOString() || post.data.publishDate.toISOString(),
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": getFullUrl(`/blog/${post.slug}`)
+    "@id": getFullUrl(`/blog/${post.id}`)
   },
   "keywords": post.data.tags.join(', '),
   "articleSection": post.data.category,
@@ -105,7 +105,7 @@ const structuredData = {
         "@type": "ListItem",
         "position": 3,
         "name": post.data.title,
-        "item": getFullUrl(`/blog/${post.slug}`)
+        "item": getFullUrl(`/blog/${post.id}`)
       }
     ]
   })} />
@@ -205,7 +205,7 @@ const structuredData = {
         <div class="grid md:grid-cols-3 gap-6">
           {relatedPosts.map((relatedPost) => (
             <article class="group">
-              <a href={`/blog/${relatedPost.slug}`} class="block">
+              <a href={`/blog/${relatedPost.id}`} class="block">
                 <div class="bg-card rounded-lg border p-6 hover:border-primary transition-colors h-full">
                   <div class="flex items-center gap-2 mb-3">
                     <span class="text-lg">{getCategoryEmoji(relatedPost.data.category)}</span>

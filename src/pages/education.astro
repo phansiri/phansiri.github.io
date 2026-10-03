@@ -3,11 +3,8 @@ import MainLayout from '../layouts/main.astro';
 import { getCollection } from 'astro:content';
 
 // Get all education and certifications from Content Collections
-const educationCollection = await getCollection('education');
-const certificationsCollection = await getCollection('certifications');
-
-const allEducation = educationCollection[0]?.data || [];
-const certifications = certificationsCollection[0]?.data || [];
+const allEducation = (await getCollection('education')).map((entry) => entry.data);
+const certifications = (await getCollection('certifications')).map((entry) => entry.data);
 
 // Sort education by graduation date (most recent first)
 const sortedEducation = [...allEducation].sort((a, b) => parseInt(b.gradDate) - parseInt(a.gradDate));

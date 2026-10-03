@@ -3,8 +3,7 @@ import MainLayout from '../layouts/main.astro';
 import { getCollection } from 'astro:content';
 
 // Get all experiences from Content Collections
-const experiencesCollection = await getCollection('experiences');
-const experiences = experiencesCollection[0]?.data || [];
+const experiences = (await getCollection('experiences')).map((entry) => entry.data);
 
 const formatPeriod = (period: string) => {
 	return period;

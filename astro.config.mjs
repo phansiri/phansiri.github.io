@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import mermaid from 'astro-mermaid';
+import { satteri } from '@astrojs/markdown-satteri';
 import tailwindcss from '@tailwindcss/vite';
 import { siteConfig } from './src/lib/config.ts';
 
@@ -18,6 +19,13 @@ export default defineConfig({
   // Build optimizations
   build: {
     inlineStylesheets: 'auto',
+  },
+
+  // Allow MDX to compile HTML nodes emitted by integrations like astro-mermaid.
+  markdown: {
+    processor: satteri({
+      features: { rawHtml: true },
+    }),
   },
   
   // Vite configuration
