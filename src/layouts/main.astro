@@ -20,8 +20,8 @@ export interface Props {
 }
 
 const { 
-	title = "Lit Phansiri - Full Stack Data Scientist",
-	description = "Full Stack Data Scientist, Active Duty U.S. Marine, and UC Berkeley graduate specializing in cutting-edge Generative AI solutions",
+	title = "Lit Phansiri — Capt, USMC · Data Scientist",
+	description = siteConfig.description,
 	image = "/favicon.ico?v=2",
 	canonicalURL = Astro.url,
 	type = "website",
@@ -41,34 +41,36 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<script is:inline>
+			(function () {
+				const stored = localStorage.getItem('theme');
+				const theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+				document.documentElement.classList.toggle('dark', theme === 'dark');
+			})();
+		</script>
 		<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
 		<link rel="shortcut icon" href="/favicon.ico?v=2" />
 		<link rel="apple-touch-icon" href="/favicon.ico?v=2" />
 		<link rel="icon" href="/favicon.ico?v=2" />
 		<meta name="generator" content={Astro.generator} />
 		
-		<!-- Primary Meta Tags -->
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
 		
-		<!-- Robots Meta -->
 		<meta name="robots" content={`${noindex ? 'noindex' : 'index'}, ${nofollow ? 'nofollow' : 'follow'}`} />
 		
-		<!-- Author and Publisher -->
 		<meta name="author" content={author} />
 		<meta name="publisher" content="Lit Phansiri" />
 		
-		<!-- Language and Region -->
 		<meta name="language" content="en-US" />
 		<meta name="geo.region" content="US" />
 		<meta name="geo.placename" content="United States" />
 		
-		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content={type} />
 		<meta property="og:url" content={fullCanonicalURL} />
 		<meta property="og:title" content={title} />
@@ -85,7 +87,6 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 		{type === 'article' && section && <meta property="article:section" content={section} />}
 		{type === 'article' && tags.length > 0 && tags.map(tag => <meta property="article:tag" content={tag} />)}
 		
-		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content={siteConfig.seo.twitterHandle} />
 		<meta name="twitter:creator" content={siteConfig.author.name} />
@@ -95,17 +96,14 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 		<meta name="twitter:image" content={fullImageURL} />
 		<meta name="twitter:image:alt" content={`${title} - ${description}`} />
 		
-		<!-- Canonical URL -->
 		<link rel="canonical" href={fullCanonicalURL} />
 		
-		<!-- Hreflang for internationalization -->
 		<link rel="alternate" hreflang="en" href={fullCanonicalURL} />
 		<link rel="alternate" hreflang="en-US" href={fullCanonicalURL} />
 		<link rel="alternate" hreflang="x-default" href={fullCanonicalURL} />
 		
-		<!-- Additional SEO -->
-		<meta name="keywords" content="data scientist, full stack developer, AI, machine learning, UC Berkeley, Marine Corps, blog, technology, computer systems, generative AI, neural networks, transformers" />
-		<meta name="subject" content="Technology and AI/ML Blog" />
+		<meta name="keywords" content="Captain, USMC, data scientist, AI, machine learning, UC Berkeley, Marine Corps, generative AI, superintelligence" />
+		<meta name="subject" content="AI systems and Marine Corps officer portfolio" />
 		<meta name="copyright" content={siteConfig.author.name} />
 		<meta name="reply-to" content={siteConfig.author.email} />
 		<meta name="owner" content={siteConfig.author.name} />
@@ -116,41 +114,32 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 		<meta name="rating" content="General" />
 		<meta name="revisit-after" content="7 days" />
 		
-		<!-- RSS Feed -->
 		<link rel="alternate" type="application/rss+xml" title={`${siteConfig.author.name} Blog RSS`} href="/rss.xml" />
 		
-		<!-- Theme Color -->
-		<meta name="theme-color" content="#ffffff" />
-		<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+		<meta name="theme-color" content="#0A1628" media="(prefers-color-scheme: dark)" />
+		<meta name="theme-color" content="#F0F3F7" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0A1628" />
 		
-		<!-- Mobile App Meta -->
 		<meta name="mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="apple-mobile-web-app-title" content={siteConfig.author.name} />
 		
-		<!-- Preconnect to external domains -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		
-		<!-- DNS Prefetch for performance -->
 		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
 		<link rel="dns-prefetch" href="//fonts.gstatic.com" />
 		
-		<!-- Geist Mono Font -->
-		<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		
-		<!-- Preload critical resources -->
 		<link rel="preload" href="/favicon.ico?v=2" as="image" type="image/x-icon" />
 		
-		<!-- Security Headers -->
 		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';" />
 		<meta http-equiv="X-Frame-Options" content="DENY" />
 		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 		<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 		<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
 		
-		<!-- Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "Person",
@@ -162,7 +151,7 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 				siteConfig.social.linkedin,
 				"https://twitter.com/litphansiri"
 			],
-			"jobTitle": "Full Stack Data Scientist",
+			"jobTitle": "Captain, U.S. Marine Corps / Data Scientist",
 			"worksFor": {
 				"@type": "Organization",
 				"name": "United States Marine Corps"
@@ -177,9 +166,9 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 				"Data Science",
 				"Computer Systems",
 				"Generative AI",
-				"Neural Networks"
+				"Superintelligence"
 			],
-			"description": "Full Stack Data Scientist, Active Duty U.S. Marine, and UC Berkeley graduate specializing in cutting-edge Generative AI solutions"
+			"description": siteConfig.description
 		})} />
 		
 		<script type="application/ld+json" set:html={JSON.stringify({
@@ -204,7 +193,7 @@ const fullCanonicalURL = new URL(canonicalURL, siteURL).href;
 		})} />
 	</head>
 	<body class="min-h-screen bg-background text-foreground">
-		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md z-50">
+		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 z-50 border border-primary">
 			Skip to main content
 		</a>
 		<Header title={siteConfig.author.name} currentPath={currentPath} />

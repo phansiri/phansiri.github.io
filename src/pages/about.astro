@@ -1,199 +1,134 @@
 ---
 import MainLayout from '../layouts/main.astro';
-import { Button } from '@/components/ui/button';
 import { getCollection } from 'astro:content';
 
-// Get skills from Content Collections
 const skillsData = (await getCollection('skills')).map((entry) => entry.data);
+
+const milestones = [
+	{ year: '2027+', text: 'Launching an AI startup — agents that solve real problems for real organizations.' },
+	{ year: '2027', text: 'Retiring from the Marine Corps after 24+ years of service.' },
+	{ year: '2025', text: 'Graduated UC Berkeley MIDS; focused on generative AI systems.' },
+	{ year: '2020', text: 'Led AI-driven cyber operations at Marine Forces Cyber Command.' },
+	{ year: '2017', text: 'Became one of the first Cyberspace Warfare Officers in the USMC.' },
+	{ year: '2003', text: 'Enlisted in the Marine Corps.' },
+];
 ---
 
 <MainLayout 
-	title="About Me - Lit Phansiri" 
-	description="Learn about Lit Phansiri's journey as a Full Stack Data Scientist, U.S. Marine, and UC Berkeley graduate specializing in Generative AI"
+	title="About — Lit Phansiri" 
+	description="Capt Lit Phansiri: U.S. Marine Corps Officer, UC Berkeley data scientist, building AI systems."
 >
-	<!-- Hero Section -->
-	<section class="container mx-auto px-4 py-16">
-		<div class="max-w-4xl mx-auto">
-			<div class="text-center mb-16">
-				<div class="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+	<section class="hero-grid border-b border-border">
+		<div class="container mx-auto px-4 py-20">
+			<div class="max-w-3xl">
+				<div class="w-28 h-28 mb-8 border-2 border-primary overflow-hidden bg-card">
 					<img 
 						src="/portfolio/lit_profile.png" 
-						alt="Lit Phansiri - Full Stack Data Scientist" 
+						alt="Lit Phansiri" 
 						class="w-full h-full object-cover"
 					/>
 				</div>
-				<h1 class="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
-				<p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-					Full Stack Data Scientist, Active Duty U.S. Marine, and UC Berkeley graduate specializing in cutting-edge Generative AI solutions.
+				<h1 class="font-display text-4xl md:text-6xl font-bold mb-4">About</h1>
+				<p class="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+					Captain (O-3E), U.S. Marine Corps. UC Berkeley MIDS. Building AI systems with the same discipline the Corps taught me.
 				</p>
 			</div>
+		</div>
+	</section>
 
-			<!-- About Content -->
-			<div class="max-w-4xl mx-auto">
-				<!-- Story -->
-				<div>
-					<h2 class="text-3xl font-bold mb-6">My Story</h2>
-					<div class="space-y-4 text-muted-foreground">
-						<p>
-							As an Active Duty U.S. Marine and UC Berkeley-trained Data Scientist, I bring a unique 
-							combination of military discipline, academic excellence, and technical expertise to every project. 
-							My journey spans from serving our country to developing cutting-edge Generative AI solutions.
-						</p>
-						<p>
-							I specialize in Full Stack Data Science, combining deep technical knowledge with practical 
-							implementation skills. My work focuses on creating AI solutions that solve real-world problems 
-							and drive meaningful impact across various industries.
-						</p>
-						<p>
-							Whether I'm developing machine learning models, building data pipelines, or leading technical 
-							teams, I approach every challenge with the same dedication and precision I learned in the Marines.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Skills Section -->
-			<div class="mt-16">
-				<h2 class="text-3xl font-bold text-center mb-12">Skills & Technologies</h2>
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-					{skillsData.map((skillGroup) => (
-						<div class="bg-card border rounded-lg p-6">
-							<h3 class="text-lg font-semibold mb-4 text-center">{skillGroup.category}</h3>
-							<div class="flex flex-wrap gap-2 justify-center">
-								{skillGroup.skills.map((skill) => {
-									// Define color classes based on category
-									const colorClasses = {
-										'AI/ML Technology': 'bg-blue-100 text-blue-800',
-										'LLM Inferencing': 'bg-green-100 text-green-800',
-										'Languages': 'bg-purple-100 text-purple-800',
-										'Backend Technologies': 'bg-orange-100 text-orange-800',
-										'Frontend Technologies': 'bg-pink-100 text-pink-800',
-										'Cloud & DevOps': 'bg-cyan-100 text-cyan-800',
-										'Other Technologies': 'bg-indigo-100 text-indigo-800',
-										'Leadership & Management': 'bg-emerald-100 text-emerald-800'
-									};
-									const colorClass = colorClasses[skillGroup.category as keyof typeof colorClasses] || 'bg-gray-100 text-gray-800';
-
-									return (
-										<span class={`px-3 py-1 ${colorClass} rounded-full text-sm`}>
-											{skill}
-										</span>
-									);
-								})}
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-
-			<!-- Life Milestones Timeline -->
-			<div class="mt-16">
-				<h2 class="text-3xl font-bold text-center mb-12 text-primary">Life Milestones</h2>
-				<div class="max-w-4xl mx-auto">
-					<div class="border-l-4 border-primary/30 pl-8 space-y-8">
-						<div class="relative">
-							<div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
-							<div class="ml-4">
-								<span class="font-bold text-primary text-lg">2027+:</span>
-								<span class="text-muted-foreground ml-2">Launching my own AI startup, building innovative AI agents to solve real-world problems and empower organizations.</span>
-							</div>
-						</div>
-						
-						<div class="relative">
-							<div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
-							<div class="ml-4">
-								<span class="font-bold text-primary text-lg">2027:</span>
-								<span class="text-muted-foreground ml-2">Retired from the Marine Corps with 24+ years of faithful service.</span>
-							</div>
-						</div>
-						
-						<div class="relative">
-							<div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
-							<div class="ml-4">
-								<span class="font-bold text-primary text-lg">2025:</span>
-								<span class="text-muted-foreground ml-2">Graduated from UC Berkeley, launching a new chapter as a data scientist focused on generative AI.</span>
-							</div>
-						</div>
-						
-						<div class="relative">
-							<div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
-							<div class="ml-4">
-								<span class="font-bold text-primary text-lg">2020:</span>
-								<span class="text-muted-foreground ml-2">Led AI-driven cyber operations at Marine Forces Cyber Command, integrating advanced analytics into defense.</span>
-							</div>
-						</div>
-						
-						<div class="relative">
-							<div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
-							<div class="ml-4">
-								<span class="font-bold text-primary text-lg">2017:</span>
-								<span class="text-muted-foreground ml-2">Became one of the first Cyberspace Warfare Officers, pioneering new capabilities for the USMC.</span>
-							</div>
-						</div>
-						
-						<div class="relative">
-							<div class="absolute -left-3 top-0 w-6 h-6 bg-primary rounded-full border-4 border-background"></div>
-							<div class="ml-4">
-								<span class="font-bold text-primary text-lg">2003:</span>
-								<span class="text-muted-foreground ml-2">Enlisted in the Marine Corps, beginning a journey of leadership and technical growth.</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Vision Statement -->
-			<div class="mt-16">
-				<div class="max-w-4xl mx-auto bg-muted/50 border-l-4 border-primary p-8 rounded-xl text-center shadow-lg">
-					<h3 class="text-xl font-semibold mb-4 text-primary">My Vision</h3>
-					<p class="text-lg font-medium text-muted-foreground">
-						To help build a better world, one AI agent at a time—empowering people and organizations to achieve more through intelligent technology.
-					</p>
-				</div>
-			</div>
-
-			<!-- Values -->
-			<div class="mt-16">
-				<h2 class="text-3xl font-bold text-center mb-12">What I Value</h2>
-				<div class="grid md:grid-cols-3 gap-8">
-				<div class="text-center">
-					<div class="text-4xl mb-4">🎖️</div>
-					<h3 class="text-xl font-semibold mb-3">Service & Leadership</h3>
-					<p class="text-muted-foreground">
-						Bringing military discipline and leadership principles to every project and team I work with.
-					</p>
-				</div>
-				<div class="text-center">
-					<div class="text-4xl mb-4">🧠</div>
-					<h3 class="text-xl font-semibold mb-3">Data-Driven Solutions</h3>
-					<p class="text-muted-foreground">
-						Creating AI solutions that solve real-world problems through rigorous analysis and innovation.
-					</p>
-				</div>
-				<div class="text-center">
-					<div class="text-4xl mb-4">🎓</div>
-					<h3 class="text-xl font-semibold mb-3">Academic Excellence</h3>
-					<p class="text-muted-foreground">
-						Leveraging UC Berkeley's rigorous training to deliver cutting-edge data science solutions.
-					</p>
-				</div>
-				</div>
-			</div>
-
-			<!-- CTA -->
-			<div class="text-center mt-16">
-				<h2 class="text-2xl font-bold mb-4">Let's Work Together</h2>
-				<p class="text-muted-foreground mb-8">
-					Interested in collaborating or have a project in mind? I'd love to hear from you!
+	<section class="container mx-auto px-4 py-16">
+		<div class="max-w-3xl">
+			<h2 class="font-display text-2xl font-bold mb-6">Story</h2>
+			<div class="space-y-4 text-muted-foreground leading-relaxed">
+				<p>
+					As an Active Duty U.S. Marine and UC Berkeley-trained data scientist, I bring military
+					discipline and technical depth to every system I build. The work spans from serving the
+					country to shipping generative AI that has to hold up under real constraints.
 				</p>
-				<div class="flex flex-col sm:flex-row gap-4 justify-center">
-					<Button size="lg" className="text-lg px-8 py-3">
-						<a href="/contact">Get In Touch</a>
-					</Button>
-					<Button variant="outline" size="lg" className="text-lg px-8 py-3">
-						<a href="/projects">View My Work</a>
-					</Button>
+				<p>
+					I specialize in full-stack data science — models, pipelines, and the interfaces that put
+					them in front of people. The through-line is impact: AI that solves problems, not demos.
+				</p>
+				<p>
+					Whether leading a team or debugging an inference stack, I approach the work the way the
+					Marines trained me: clear intent, precise execution, own the outcome.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-5xl">
+			<div class="pixel-rule mb-8"></div>
+			<h2 class="font-display text-2xl font-bold mb-8">Skills</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+				{skillsData.map((skillGroup) => (
+					<div class="pixel-panel p-5">
+						<h3 class="font-display text-base font-semibold mb-4 text-gold">{skillGroup.category}</h3>
+						<div class="flex flex-wrap gap-2">
+							{skillGroup.skills.map((skill) => (
+								<span class="pixel-tag">{skill}</span>
+							))}
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-3xl">
+			<h2 class="font-display text-2xl font-bold mb-8">Milestones</h2>
+			<ol class="border-l-2 border-primary space-y-8 pl-6">
+				{milestones.map((m) => (
+					<li class="relative">
+						<span class="absolute -left-[1.9rem] top-1 h-3 w-3 bg-primary border-2 border-background"></span>
+						<span class="font-display text-primary font-semibold mr-2">{m.year}</span>
+						<span class="text-muted-foreground">{m.text}</span>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-3xl border border-border border-l-4 border-l-gold bg-card p-8">
+			<h2 class="font-display text-xl font-semibold mb-3 text-gold">Vision</h2>
+			<p class="text-muted-foreground leading-relaxed">
+				Help build a better world, one AI agent at a time — empowering people and organizations
+				through systems that are useful, accountable, and built to last.
+			</p>
+		</div>
+	</section>
+
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-3xl">
+			<h2 class="font-display text-2xl font-bold mb-8">What I value</h2>
+			<div class="border border-border divide-y divide-border">
+				<div class="px-5 py-5">
+					<h3 class="font-display text-lg font-semibold mb-2">Service and leadership</h3>
+					<p class="text-sm text-muted-foreground">Military discipline and clear ownership applied to every team and project.</p>
 				</div>
+				<div class="px-5 py-5">
+					<h3 class="font-display text-lg font-semibold mb-2">Data-driven systems</h3>
+					<p class="text-sm text-muted-foreground">AI that earns its place by solving real problems under real constraints.</p>
+				</div>
+				<div class="px-5 py-5">
+					<h3 class="font-display text-lg font-semibold mb-2">Academic rigor</h3>
+					<p class="text-sm text-muted-foreground">Berkeley training as a foundation for careful, durable technical work.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="container mx-auto px-4 pb-20">
+		<div class="max-w-3xl">
+			<div class="pixel-rule mb-8"></div>
+			<h2 class="font-display text-2xl font-bold mb-3">Work together</h2>
+			<p class="text-muted-foreground mb-6">Have a problem worth solving? Reach out.</p>
+			<div class="flex flex-col sm:flex-row gap-3">
+				<a href="/contact" class="btn btn-primary btn-lg cta-scan">Get In Touch</a>
+				<a href="/projects" class="btn btn-outline btn-lg">View Projects</a>
 			</div>
 		</div>
 	</section>
