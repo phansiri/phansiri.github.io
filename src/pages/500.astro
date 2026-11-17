@@ -1,55 +1,38 @@
 ---
 import MainLayout from '../layouts/main.astro';
-import { Button } from '@/components/ui/button';
 ---
 
 <MainLayout 
-  title="Server Error - Lit Phansiri"
-  description="Something went wrong on our end. Please try again later or contact me if the problem persists."
+  title="Server Error — Lit Phansiri"
+  description="Something went wrong on our end."
   noindex={true}
 >
-  <!-- 500 Error Page -->
-  <div class="container mx-auto px-4 py-16 text-center">
-    <div class="max-w-2xl mx-auto">
-      <!-- Error Code -->
-      <div class="text-8xl md:text-9xl font-bold text-destructive/20 mb-8">500</div>
-      
-      <!-- Error Message -->
-      <h1 class="text-3xl md:text-4xl font-bold mb-6">Server Error</h1>
-      <p class="text-xl text-muted-foreground mb-8">
-        Something went wrong on our end. We're working to fix this issue.
-      </p>
-      
-      <!-- What to do -->
-      <div class="bg-muted/50 rounded-lg p-6 mb-8">
-        <h3 class="font-semibold mb-4">What you can do:</h3>
-        <ul class="text-left text-sm text-muted-foreground space-y-2">
-          <li>• Try refreshing the page in a few minutes</li>
-          <li>• Check if the problem persists</li>
-          <li>• Clear your browser cache and cookies</li>
-          <li>• Try accessing the site from a different browser</li>
-        </ul>
-      </div>
-      
-      <!-- Quick Actions -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-        <button onclick="window.location.reload()" class="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
-          Refresh Page
-        </button>
-        <a href="/" class="px-6 py-2 border border-border rounded-md hover:bg-accent transition-colors">
-          Go Home
-        </a>
-      </div>
-      
-      <!-- Contact for persistent issues -->
-      <div class="text-center">
-        <p class="text-sm text-muted-foreground mb-4">
-          If this problem persists, please let me know:
+  <section class="hero-grid border-b border-border">
+    <div class="container mx-auto px-4 py-24">
+      <div class="max-w-2xl">
+        <p class="font-display text-6xl md:text-8xl font-bold text-primary mb-4">500</p>
+        <h1 class="font-display text-3xl md:text-4xl font-bold mb-4">Server error</h1>
+        <p class="text-muted-foreground mb-8 leading-relaxed">
+          Something broke on this end. Working the problem.
         </p>
-        <a href="/contact">
-          <Button variant="outline">Report Issue</Button>
-        </a>
+
+        <div class="border border-border bg-card p-6 mb-8">
+          <h2 class="font-display font-semibold mb-3">What you can do</h2>
+          <ul class="text-sm text-muted-foreground space-y-2">
+            <li class="flex gap-2"><span class="text-primary">▸</span> Refresh in a few minutes</li>
+            <li class="flex gap-2"><span class="text-primary">▸</span> Clear cache and try again</li>
+            <li class="flex gap-2"><span class="text-primary">▸</span> Try a different browser</li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button type="button" onclick="window.location.reload()" class="btn btn-primary btn-lg cta-scan">
+            Refresh
+          </button>
+          <a href="/" class="btn btn-outline btn-lg">Go Home</a>
+          <a href="/contact" class="btn btn-outline btn-lg">Report Issue</a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </MainLayout>

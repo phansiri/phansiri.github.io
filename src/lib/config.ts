@@ -2,8 +2,8 @@
 export const siteConfig = {
   // Site Information
   url: 'https://phansiri.github.io',
-  name: 'Lit Phansiri Portfolio',
-  description: 'Portfolio and blog of Lit Phansiri, Full Stack Data Scientist',
+  name: 'Lit Phansiri',
+  description: 'Captain (O-3E), U.S. Marine Corps Officer and UC Berkeley data scientist building AI systems and exploring superintelligence.',
   
   // Author Information
   author: {

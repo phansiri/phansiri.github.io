@@ -1,0 +1,216 @@
+---
+/**
+ * Stylized USMC-inspired rank marks — not official insignia artwork.
+ * Enlisted: pixel scarlet/gold chevrons, compact crossed rifles, rockers curve down.
+ * Officer: gold bar (2ndLt), silver bars (1stLt, Capt).
+ */
+
+type Rank = {
+	code: string;
+	abbr: string;
+	name: string;
+	paygrade: string;
+	kind: 'enlisted' | 'officer';
+};
+
+const ranks: Rank[] = [
+	{ code: 'e1', abbr: 'Pvt', name: 'Private', paygrade: 'E-1', kind: 'enlisted' },
+	{ code: 'e2', abbr: 'PFC', name: 'Private First Class', paygrade: 'E-2', kind: 'enlisted' },
+	{ code: 'e3', abbr: 'LCpl', name: 'Lance Corporal', paygrade: 'E-3', kind: 'enlisted' },
+	{ code: 'e4', abbr: 'Cpl', name: 'Corporal', paygrade: 'E-4', kind: 'enlisted' },
+	{ code: 'e5', abbr: 'Sgt', name: 'Sergeant', paygrade: 'E-5', kind: 'enlisted' },
+	{ code: 'e6', abbr: 'SSgt', name: 'Staff Sergeant', paygrade: 'E-6', kind: 'enlisted' },
+	{ code: 'e7', abbr: 'GySgt', name: 'Gunnery Sergeant', paygrade: 'E-7', kind: 'enlisted' },
+	{ code: 'o1', abbr: '2ndLt', name: 'Second Lieutenant', paygrade: 'O-1', kind: 'officer' },
+	{ code: 'o2', abbr: '1stLt', name: 'First Lieutenant', paygrade: 'O-2', kind: 'officer' },
+	{ code: 'o3', abbr: 'Capt', name: 'Captain (O-3E)', paygrade: 'O-3E', kind: 'officer' },
+];
+
+const enlisted = ranks.filter((r) => r.kind === 'enlisted');
+const officers = ranks.filter((r) => r.kind === 'officer');
+
+const SCARLET = '#C8102E';
+const GOLD = '#FFD100';
+const SILVER = '#C8CDD4';
+const SILVER_EDGE = '#9aa3ad';
+---
+
+<section class="rank-trail" aria-label="Ranks earned">
+	<div class="mb-6">
+		<p class="text-xs tracking-[0.2em] uppercase text-gold mb-2">Enlisted</p>
+		<ul class="grid grid-cols-4 sm:grid-cols-7 gap-2">
+			{enlisted.map((rank) => (
+				<li class="pixel-panel flex flex-col items-center gap-2 p-3 text-center">
+					<span class="rank-mark" aria-hidden="true">
+						{/* E-1 Private — no insignia */}
+						{rank.code === 'e1' && (
+							<svg viewBox="0 0 32 40" class="h-14 w-11" shape-rendering="crispEdges">
+								<rect width="32" height="40" fill={SCARLET} />
+								<rect x="10" y="19" width="12" height="2" fill={GOLD} opacity="0.55" />
+							</svg>
+						)}
+
+						{/* E-2 PFC — 1 pixel chevron */}
+						{rank.code === 'e2' && (
+							<svg viewBox="0 0 32 40" class="h-14 w-11" shape-rendering="crispEdges">
+								<rect width="32" height="40" fill={SCARLET} />
+								<path fill={GOLD} d="M4 30 L6 30 L6 28 L10 28 L10 26 L14 26 L14 24 L18 24 L18 26 L22 26 L22 28 L26 28 L26 30 L28 30 L28 32 L22 32 L22 30 L18 30 L18 28 L14 28 L14 30 L10 30 L10 32 L4 32 Z" />
+							</svg>
+						)}
+
+						{/* E-3 LCpl — 1 chevron + small crossed rifles */}
+						{rank.code === 'e3' && (
+							<svg viewBox="0 0 32 40" class="h-14 w-11" shape-rendering="crispEdges">
+								<rect width="32" height="40" fill={SCARLET} />
+								<path fill={GOLD} d="M4 18 L6 18 L6 16 L10 16 L10 14 L14 14 L14 12 L18 12 L18 14 L22 14 L22 16 L26 16 L26 18 L28 18 L28 20 L22 20 L22 18 L18 18 L18 16 L14 16 L14 18 L10 18 L10 20 L4 20 Z" />
+								{/* compact crossed rifles */}
+								<g transform="translate(16 28)">
+									<g transform="rotate(-38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+									<g transform="rotate(38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+								</g>
+							</svg>
+						)}
+
+						{/* E-4 Cpl — 2 chevrons + small crossed rifles */}
+						{rank.code === 'e4' && (
+							<svg viewBox="0 0 32 40" class="h-14 w-11" shape-rendering="crispEdges">
+								<rect width="32" height="40" fill={SCARLET} />
+								<path fill={GOLD} d="M4 14 L6 14 L6 12 L10 12 L10 10 L14 10 L14 8 L18 8 L18 10 L22 10 L22 12 L26 12 L26 14 L28 14 L28 16 L22 16 L22 14 L18 14 L18 12 L14 12 L14 14 L10 14 L10 16 L4 16 Z" />
+								<path fill={GOLD} d="M4 20 L6 20 L6 18 L10 18 L10 16 L14 16 L14 14 L18 14 L18 16 L22 16 L22 18 L26 18 L26 20 L28 20 L28 22 L22 22 L22 20 L18 20 L18 18 L14 18 L14 20 L10 20 L10 22 L4 22 Z" />
+								<g transform="translate(16 30)">
+									<g transform="rotate(-38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+									<g transform="rotate(38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+								</g>
+							</svg>
+						)}
+
+						{/* E-5 Sgt — 3 chevrons + small crossed rifles */}
+						{rank.code === 'e5' && (
+							<svg viewBox="0 0 32 42" class="h-14 w-11" shape-rendering="crispEdges">
+								<rect width="32" height="42" fill={SCARLET} />
+								<path fill={GOLD} d="M4 12 L6 12 L6 10 L10 10 L10 8 L14 8 L14 6 L18 6 L18 8 L22 8 L22 10 L26 10 L26 12 L28 12 L28 14 L22 14 L22 12 L18 12 L18 10 L14 10 L14 12 L10 12 L10 14 L4 14 Z" />
+								<path fill={GOLD} d="M4 18 L6 18 L6 16 L10 16 L10 14 L14 14 L14 12 L18 12 L18 14 L22 14 L22 16 L26 16 L26 18 L28 18 L28 20 L22 20 L22 18 L18 18 L18 16 L14 16 L14 18 L10 18 L10 20 L4 20 Z" />
+								<path fill={GOLD} d="M4 24 L6 24 L6 22 L10 22 L10 20 L14 20 L14 18 L18 18 L18 20 L22 20 L22 22 L26 22 L26 24 L28 24 L28 26 L22 26 L22 24 L18 24 L18 22 L14 22 L14 24 L10 24 L10 26 L4 26 Z" />
+								<g transform="translate(16 33)">
+									<g transform="rotate(-38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+									<g transform="rotate(38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+								</g>
+							</svg>
+						)}
+
+						{/* E-6 SSgt — 3 chevrons + rifles + 1 rocker (curve faces down) */}
+						{rank.code === 'e6' && (
+							<svg viewBox="0 0 32 48" class="h-14 w-11" shape-rendering="crispEdges">
+								<rect width="32" height="48" fill={SCARLET} />
+								<path fill={GOLD} d="M4 10 L6 10 L6 8 L10 8 L10 6 L14 6 L14 4 L18 4 L18 6 L22 6 L22 8 L26 8 L26 10 L28 10 L28 12 L22 12 L22 10 L18 10 L18 8 L14 8 L14 10 L10 10 L10 12 L4 12 Z" />
+								<path fill={GOLD} d="M4 16 L6 16 L6 14 L10 14 L10 12 L14 12 L14 10 L18 10 L18 12 L22 12 L22 14 L26 14 L26 16 L28 16 L28 18 L22 18 L22 16 L18 16 L18 14 L14 14 L14 16 L10 16 L10 18 L4 18 Z" />
+								<path fill={GOLD} d="M4 22 L6 22 L6 20 L10 20 L10 18 L14 18 L14 16 L18 16 L18 18 L22 18 L22 20 L26 20 L26 22 L28 22 L28 24 L22 24 L22 22 L18 22 L18 20 L14 20 L14 22 L10 22 L10 24 L4 24 Z" />
+								<g transform="translate(16 30)">
+									<g transform="rotate(-38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+									<g transform="rotate(38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+								</g>
+								{/* pixel rocker — ends up, middle down */}
+								<path fill={GOLD} d="M4 36 L8 36 L8 38 L12 38 L12 40 L20 40 L20 38 L24 38 L24 36 L28 36 L28 38 L24 38 L24 40 L20 40 L20 42 L12 42 L12 40 L8 40 L8 38 L4 38 Z" />
+							</svg>
+						)}
+
+						{/* E-7 GySgt — 3 chevrons + rifles + 2 rockers (curve faces down) */}
+						{rank.code === 'e7' && (
+							<svg viewBox="0 0 32 52" class="h-14 w-11" shape-rendering="crispEdges">
+								<rect width="32" height="52" fill={SCARLET} />
+								<path fill={GOLD} d="M4 10 L6 10 L6 8 L10 8 L10 6 L14 6 L14 4 L18 4 L18 6 L22 6 L22 8 L26 8 L26 10 L28 10 L28 12 L22 12 L22 10 L18 10 L18 8 L14 8 L14 10 L10 10 L10 12 L4 12 Z" />
+								<path fill={GOLD} d="M4 16 L6 16 L6 14 L10 14 L10 12 L14 12 L14 10 L18 10 L18 12 L22 12 L22 14 L26 14 L26 16 L28 16 L28 18 L22 18 L22 16 L18 16 L18 14 L14 14 L14 16 L10 16 L10 18 L4 18 Z" />
+								<path fill={GOLD} d="M4 22 L6 22 L6 20 L10 20 L10 18 L14 18 L14 16 L18 16 L18 18 L22 18 L22 20 L26 20 L26 22 L28 22 L28 24 L22 24 L22 22 L18 22 L18 20 L14 20 L14 22 L10 22 L10 24 L4 24 Z" />
+								<g transform="translate(16 30)">
+									<g transform="rotate(-38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+									<g transform="rotate(38)">
+										<rect x="-6" y="-1" width="12" height="2" fill={GOLD} />
+										<rect x="-7" y="-2" width="3" height="4" fill={GOLD} />
+									</g>
+								</g>
+								{/* rocker 1 — curve down */}
+								<path fill={GOLD} d="M4 36 L8 36 L8 38 L12 38 L12 40 L20 40 L20 38 L24 38 L24 36 L28 36 L28 38 L24 38 L24 40 L20 40 L20 42 L12 42 L12 40 L8 40 L8 38 L4 38 Z" />
+								{/* rocker 2 — curve down */}
+								<path fill={GOLD} d="M4 44 L8 44 L8 46 L12 46 L12 48 L20 48 L20 46 L24 46 L24 44 L28 44 L28 46 L24 46 L24 48 L20 48 L20 50 L12 50 L12 48 L8 48 L8 46 L4 46 Z" />
+							</svg>
+						)}
+					</span>
+					<span class="font-display text-xs text-foreground leading-tight">{rank.abbr}</span>
+					<span class="text-[10px] text-muted-foreground tracking-wide">{rank.paygrade}</span>
+					<span class="sr-only">{rank.name}</span>
+				</li>
+			))}
+		</ul>
+	</div>
+
+	<div>
+		<p class="text-xs tracking-[0.2em] uppercase text-gold mb-2">Officer</p>
+		<ul class="grid grid-cols-3 gap-2 max-w-md">
+			{officers.map((rank) => (
+				<li class="pixel-panel flex flex-col items-center gap-2 p-3 text-center">
+					<span class="rank-mark" aria-hidden="true">
+						{rank.code === 'o1' && (
+							<svg viewBox="0 0 40 48" class="h-14 w-12" shape-rendering="crispEdges">
+								<rect x="15" y="8" width="10" height="32" fill={GOLD} />
+							</svg>
+						)}
+						{rank.code === 'o2' && (
+							<svg viewBox="0 0 40 48" class="h-14 w-12" shape-rendering="crispEdges">
+								<rect x="15" y="8" width="10" height="32" fill={SILVER} stroke={SILVER_EDGE} stroke-width="1" />
+							</svg>
+						)}
+						{rank.code === 'o3' && (
+							<svg viewBox="0 0 40 48" class="h-14 w-12" shape-rendering="crispEdges">
+								<rect x="8" y="8" width="9" height="32" fill={SILVER} stroke={SILVER_EDGE} stroke-width="1" />
+								<rect x="23" y="8" width="9" height="32" fill={SILVER} stroke={SILVER_EDGE} stroke-width="1" />
+							</svg>
+						)}
+					</span>
+					<span class="font-display text-xs text-foreground leading-tight">{rank.abbr}</span>
+					<span class="text-[10px] text-muted-foreground tracking-wide">{rank.paygrade}</span>
+					<span class="sr-only">{rank.name}</span>
+				</li>
+			))}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.rank-mark {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.rank-mark svg {
+		display: block;
+		image-rendering: pixelated;
+	}
+</style>
