@@ -1,5 +1,6 @@
 ---
 import MainLayout from '../layouts/main.astro';
+import RankTrail from '../components/RankTrail.astro';
 import { getCollection } from 'astro:content';
 
 const skillsData = (await getCollection('skills')).map((entry) => entry.data);
@@ -73,6 +74,17 @@ const milestones = [
 					</div>
 				))}
 			</div>
+		</div>
+	</section>
+
+	<section class="container mx-auto px-4 pb-16">
+		<div class="max-w-3xl">
+			<div class="pixel-rule mb-8"></div>
+			<h2 class="font-display text-2xl font-bold mb-3">Ranks earned</h2>
+			<p class="text-sm text-muted-foreground mb-8 max-w-2xl">
+				Enlisted E-1 through E-7, then commissioned — through Captain (O-3E). Marks are stylized for the site, not official insignia.
+			</p>
+			<RankTrail />
 		</div>
 	</section>
 

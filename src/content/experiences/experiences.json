@@ -1,6 +1,7 @@
 [
   {
-    "id": "mccyber-2024-1",
+    "id": "mccyber-2024-02",
+    "order": 1,
     "title": "Data Scientist",
     "company": "Marine Forces Cyber Command",
     "location": "Fort Meade, MD",
@@ -15,8 +16,9 @@
     "technologies": ["Python", "Machine Learning", "AI/ML", "Data Science", "Cybersecurity", "Cloud Computing"]
   },
   {
-    "id": "mccyber-2024",
-    "title": "Assistant Future/Current Operations Office and Training Officer",
+    "id": "mccyber-2024-01",
+    "order": 2,
+    "title": "Assistant Future/Current Operations Officer and Training Officer",
     "company": "Marine Corps Cyberspace Warfare Group",
     "location": "Fort Meade, MD",
     "period": "2023 - 2024",
@@ -31,6 +33,7 @@
   },
   {
     "id": "usmc-2023",
+    "order": 3,
     "title": "Cyberspace Warfare Officer - Staff Planner",
     "company": "31st Marine Expeditionary Unit",
     "location": "Okinawa, Japan",
@@ -45,22 +48,8 @@
     "technologies": ["Cyber Operations", "Tactical Planning", "Military Operations", "Innovation", "Strategic Planning"]
   },
   {
-    "id": "usmc-2020-1",
-    "title": "Cyberspace Warfare Officer - Executive Officer, Operations Officer, and Platoon Commander",
-    "company": "DCO-IDM, III MIG, III MEF",
-    "location": "Okinawa, Japan",
-    "period": "2018 - 2020",
-    "description": "Led the development of the new defensive cyber operations program for the III Marine Expeditionary Force.",
-    "achievements": [
-      "Established new defensive cyber operations program",
-      "Led multiple cyber operations teams",
-      "Developed operational procedures and protocols",
-      "Managed cyber operations for III Marine Expeditionary Force"
-    ],
-    "technologies": ["Cyber Operations", "Leadership", "Program Development", "Operations Management", "Team Leadership"]
-  },
-  {
     "id": "usmc-2020",
+    "order": 4,
     "title": "Software Engineer",
     "company": "Defense Digital Service",
     "location": "Washington, DC",
@@ -75,7 +64,24 @@
     "technologies": ["DevSecOps", "Cloud Computing", "Software Engineering", "Automation", "Security", "AWS", "Docker"]
   },
   {
+    "id": "usmc-2020-1",
+    "order": 5,
+    "title": "Cyberspace Warfare Officer - Executive Officer, Operations Officer, and Platoon Commander",
+    "company": "DCO-IDM, III MIG, III MEF",
+    "location": "Okinawa, Japan",
+    "period": "2018 - 2020",
+    "description": "Led the development of the new defensive cyber operations program for the III Marine Expeditionary Force.",
+    "achievements": [
+      "Established new defensive cyber operations program",
+      "Led multiple cyber operations teams",
+      "Developed operational procedures and protocols",
+      "Managed cyber operations for III Marine Expeditionary Force"
+    ],
+    "technologies": ["Cyber Operations", "Leadership", "Program Development", "Operations Management", "Team Leadership"]
+  },
+  {
     "id": "usmc-2012",
+    "order": 6,
     "title": "Canvassing Recruiter",
     "company": "Recruiting Sub Station Bellevue, Recruiting Station Seattle",
     "location": "Bellevue, WA",
@@ -91,6 +97,7 @@
   },
   {
     "id": "usmc-2017",
+    "order": 7,
     "title": "Enlisted Marine E1-E7",
     "company": "United States Marine Corps",
     "location": "Various Locations",
